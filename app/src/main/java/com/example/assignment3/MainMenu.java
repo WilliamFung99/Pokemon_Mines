@@ -19,7 +19,6 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         setUpOptionsBtn();
-        setUpHelpBtn();
     }
 
     private void setUpOptionsBtn(){
@@ -28,17 +27,6 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = Options.makeIntentForOptions(MainMenu.this);
-                startActivity(intent);
-            }
-        });
-
-    }
-    private void setUpHelpBtn(){
-        Button helpButton = (Button) findViewById(R.id.btnHelp);
-        helpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = Help.makeIntentForHelp(MainMenu.this);
                 startActivity(intent);
             }
         });
