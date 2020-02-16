@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toTopOf="@+id/nameText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText"
-        app:srcCompat="@drawable/furreleft"
+        app:srcCompat="@drawable/furretleft"
         android:contentDescription="@string/todo" />
 
     <TextView
