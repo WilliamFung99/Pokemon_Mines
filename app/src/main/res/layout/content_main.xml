@@ -17,13 +17,14 @@
         app:layout_constraintBottom_toTopOf="@+id/nameText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText"
-        app:srcCompat="@drawable/furreleft" />
+        app:srcCompat="@drawable/furreleft"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/titleText"
         android:layout_width="329dp"
         android:layout_height="65dp"
-        android:text="Pokemon Seeker"
+        android:text="@string/pokemon_seeker"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +41,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="20dp"
-        android:text="By: Kenneth Liang and William Fung"
+        android:text="@string/by_kenneth_liang_and_william_fung"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -52,7 +53,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.43"
-        app:srcCompat="@drawable/furretright" />
+        app:srcCompat="@drawable/furretright"
+        android:contentDescription="@string/todo" />
 
     <ImageView
         android:id="@+id/furretUpRight"
@@ -65,7 +67,8 @@
         app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText"
-        app:srcCompat="@drawable/furretupright" />
+        app:srcCompat="@drawable/furretupright"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/welcomeMessage"
@@ -77,7 +80,7 @@
         android:layout_marginEnd="289dp"
         android:layout_marginRight="289dp"
         android:layout_marginBottom="56dp"
-        android:text="WELCOME!"
+        android:text="@string/welcome"
         android:textColor="@android:color/holo_orange_light"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,7 +95,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Skip"
+        android:text="@string/skip"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
