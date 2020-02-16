@@ -5,5 +5,9 @@
     <string name="by_kenneth_liang_and_william_fung">By: Kenneth Liang and William Fung</string>
     <string name="welcome">WELCOME!</string>
     <string name="skip">Skip</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="play_game">Play game!</string>
+    <string name="options">Options</string>
+    <string name="help">Help</string>
     <string name="todo">TODO</string>
 </resources>
