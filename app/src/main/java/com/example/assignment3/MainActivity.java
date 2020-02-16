@@ -4,14 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,12 +22,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        animationStart_left();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        Button skipBtn = findViewById(R.id.btnSkipAnim);
+        skipBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent mainMenu = MainMenu.makeIntent(MainActivity.this);
@@ -35,25 +34,130 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    private void animationStart_left(){
+        final ImageView furretLeft = findViewById(R.id.furretLeft);
+        final ImageView furretRight = findViewById(R.id.furretRight);
+        final ImageView furretUpright = findViewById(R.id.furretUpRight);
+        final TextView welcome = findViewById(R.id.welcomeMessage);
+
+        Animation moveLeft = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.furret_animation_left);
+        furretLeft.setAnimation(moveLeft);
+        moveLeft.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                furretRight.setVisibility(View.GONE);
+                furretUpright.setVisibility(View.GONE);
+                welcome.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                furretLeft.setVisibility(View.GONE);
+                furretRight.setVisibility(View.VISIBLE);
+                animation_right(furretLeft,furretRight);
+            }
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+    }
+    private void animation_right(final ImageView furretLeft,final ImageView furretRight){
+        Animation moveRight = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.furret_animation_right);
+        furretRight.setAnimation(moveRight);
+        moveRight.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                furretLeft.setVisibility(View.VISIBLE);
+                furretRight.setVisibility(View.GONE);
+                animation_half(furretLeft,furretRight);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    private void animation_half(final ImageView furretLeft, final ImageView furretRight){
+        Animation moveHalfLeft = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.furret_animation_half_left);
+        furretLeft.setAnimation(moveHalfLeft);
+        moveHalfLeft.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+            }
 
-        return super.onOptionsItemSelected(item);
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                furretFade(furretLeft);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+    }
+    private void furretFade(final ImageView furretLeft) {
+        Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.furret_animation_disappear);
+        furretLeft.setAnimation(fadeOut);
+        fadeOut.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                furretLeft.setVisibility(View.GONE);
+                welcomeImage();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+    }
+
+    private void welcomeImage(){
+        ImageView upRightFurret = findViewById(R.id.furretUpRight);
+        upRightFurret.setVisibility(View.VISIBLE);
+
+        Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.animation_fade_in);
+        upRightFurret.setAnimation(fadeIn);
+        fadeIn.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                welcomeText();
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                Intent mainMenu = MainMenu.makeIntent(MainActivity.this);
+                startActivity(mainMenu);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+    }
+
+    private void welcomeText(){
+        TextView welcome = findViewById(R.id.welcomeMessage);
+        welcome.setVisibility(View.VISIBLE);
+        Animation welcomeFadeIn = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.animation_fade_in);
+        welcome.setAnimation(welcomeFadeIn);
     }
 }
+
+
