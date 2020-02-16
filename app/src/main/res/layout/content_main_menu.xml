@@ -8,4 +8,20 @@
     tools:context=".MainMenu"
     tools:showIn="@layout/activity_main_menu">
 
+    <TextView
+        android:id="@+id/mainMenuTextView"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="353dp"
+        android:gravity="center"
+        android:text="@string/title_activity_main_menu"
+        android:textColor="@color/colorBlack"
+        android:textSize="38sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
