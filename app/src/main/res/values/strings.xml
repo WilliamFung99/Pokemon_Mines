@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Assignment3</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_main_menu">Main Menu</string>
+    <string name="pokemon_seeker">Pokemon Seeker</string>
+    <string name="by_kenneth_liang_and_william_fung">By: Kenneth Liang and William Fung</string>
+    <string name="welcome">WELCOME!</string>
+    <string name="skip">Skip</string>
+    <string name="todo">TODO</string>
 </resources>
