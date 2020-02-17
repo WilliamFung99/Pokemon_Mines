@@ -7,7 +7,7 @@
     <string name="welcome">WELCOME!</string>
     <string name="skip">Skip</string>
     <string name="todo">TODO</string>
-    <string name="Main_Menu">Main Menu</string>
+    <string name="main_menu">Main Menu</string>
     <string name="title_activity_options">Options</string>
     <string name="board_size">Board Size</string>
     <string name="options">Options</string>
