@@ -17,8 +17,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:gravity="center"
-        android:text="Main Menu"
         android:textColor="@color/colorBlack"
+        android:text="@string/main_menu"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:text="Play game!"
+        android:text="@string/play_game"
         app:layout_constraintEnd_toStartOf="@+id/cheeseImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainMenu" />
@@ -47,7 +47,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:text="Options"
+        android:text="@string/options"
         app:layout_constraintEnd_toStartOf="@+id/cheeseImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStart" />
@@ -61,7 +61,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:text="Help"
+        android:text="@string/help"
         app:layout_constraintEnd_toStartOf="@+id/cheeseImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnOptions" />
@@ -79,4 +79,8 @@
         app:layout_constraintTop_toBottomOf="@+id/mainMenu"
         app:layout_constraintVertical_bias="0.266"
         app:srcCompat="@drawable/pikachuimage" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.775"
+        app:srcCompat="@drawable/pikachuimage"
+        android:contentDescription="@string/todo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
