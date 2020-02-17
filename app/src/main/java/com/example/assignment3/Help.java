@@ -10,9 +10,14 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.method.LinkMovementMethod;
 import android.view.View;
+import android.widget.TextView;
 
 public class Help extends AppCompatActivity {
+
+    TextView homePageLink;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +25,10 @@ public class Help extends AppCompatActivity {
         setContentView(R.layout.activity_help);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        homePageLink = (TextView)findViewById(R.id.hyperlinkTextView);
+        homePageLink.setMovementMethod(LinkMovementMethod.getInstance());
+
     }
 
     public static Intent makeIntentForHelp(Context context){
