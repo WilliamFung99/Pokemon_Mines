@@ -15,7 +15,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="353dp"
         android:gravity="center"
-        android:text="@string/title_activity_main_menu"
+        android:text="@string/Main_Menu"
         android:textColor="@color/colorBlack"
         android:textSize="38sp"
         app:layout_constraintBottom_toBottomOf="parent"

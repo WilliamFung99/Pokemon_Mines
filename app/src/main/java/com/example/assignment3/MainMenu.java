@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Path;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -15,5 +18,33 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        setUpOptionsBtn();
+        setUpHelpBtn();
     }
+
+    private void setUpOptionsBtn(){
+        Button optionsButton = (Button) findViewById(R.id.btnOptions);
+        optionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = Options.makeIntentForOptions(MainMenu.this);
+                startActivity(intent);
+            }
+        });
+
+    }
+    private void setUpHelpBtn(){
+        Button helpButton = (Button) findViewById(R.id.btnHelp);
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = Help.makeIntentForHelp(MainMenu.this);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+
+
 }

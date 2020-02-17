@@ -1,5 +1,42 @@
 <resources>
     <string name="app_name">Assignment3</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_main_menu">Main Menu</string>
+    <string name="pokemon_seeker">Pokemon Seeker</string>
+    <string name="by_kenneth_liang_and_william_fung">By: Kenneth Liang and William Fung</string>
+    <string name="welcome">WELCOME!</string>
+    <string name="skip">Skip</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="play_game">Play game!</string>
+    <string name="options">Options</string>
+    <string name="help">Help</string>
+    <string name="todo">TODO</string>
+    <string name="Main_Menu">Main Menu</string>
+    <string name="title_activity_options">Options</string>
+    <string name="board_size">Board Size</string>
+    <string name="highest_score">Highest Score: </string>
+    <string name="highest_score_of_player">0</string>
+    <string name="reset_highest_score">Reset highest score</string>
+    <string name="number_of_times_played">Number of times played: </string>
+    <string name="number_of_times_played_of_player">0</string>
+    <string name="reset_number_of_times_played">Reset times played</string>
+    <string name="about_the_author">About the author: </string>
+    <string name="CMPT276_Link">
+        <a href = "https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home">CMPT276 Home Page</a>
+    </string>
+    <string name="number_of_mines">Number Of Mines</string>
+    <string-array name="boardSizes">
+        <item>4 by 6</item>
+        <item>5 by 10</item>
+        <item>6 by 15</item>
+    </string-array>
+
+    <string-array name="numberOfMines">
+        <item>6 mines</item>
+        <item>10 mines</item>
+        <item>15 mines</item>
+        <item>20 mines</item>
+    </string-array>
+    <string name="title_activity_help">Help</string>
+
+
 </resources>
