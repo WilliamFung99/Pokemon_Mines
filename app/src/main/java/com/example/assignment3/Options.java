@@ -25,8 +25,6 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         boardSizeSpinner = (Spinner) findViewById(R.id.boardSizeSpinner);
         numberOfMinesSpinner = (Spinner)findViewById(R.id.selectMinesSpinner);
