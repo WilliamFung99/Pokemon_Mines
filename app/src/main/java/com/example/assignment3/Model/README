@@ -5,7 +5,7 @@ public class Main {
     private static final int ROWS = 5;
     private static final int COLS = 4;
     private static final int MINES = 20;
-    public static boolean[][] mine = new boolean[ROWS][COLS];
+    public static boolean[][] mine = new boolean[COLS][ROWS];
 
     public static void main(String []arg){
         Board board = new Board(ROWS,COLS,MINES);
