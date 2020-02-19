@@ -16,6 +16,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ import android.widget.TextView;
 public class Help extends AppCompatActivity {
 
     TextView homePageLink;
+
     Dialog dialog;
     Button congratsPopup;
     Button ok;
@@ -54,7 +57,7 @@ public class Help extends AppCompatActivity {
     private void showCongratsPopup() {
         dialog.setContentView(R.layout.congrats_popup);
         close = (ImageView) dialog.findViewById(R.id.close);
-        ok = (Button) findViewById(R.id.btnOk);
+        ok = (Button) dialog.findViewById(R.id.btnOk);
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,9 +65,23 @@ public class Help extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        Window windowAlDl = dialog.getWindow();
+
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        windowAlDl.setAttributes(layoutParams);
 
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        
+
         dialog.show();
 
     }
