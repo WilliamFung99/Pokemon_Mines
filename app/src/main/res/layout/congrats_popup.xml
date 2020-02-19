@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app = "http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
-    android:layout_gravity="center"
+    android:gravity="center"
     >
 
     <ImageView
@@ -34,7 +35,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -42,13 +43,55 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="25dp"
                 >
+                <ImageView
+                    android:id="@+id/pikachuImageView"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gameOverTextView"
+                    app:srcCompat="@drawable/pikachuimage">
 
+                </ImageView>
 
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/bulbasaurImageView"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gameOverTextView"
+                    app:srcCompat="@drawable/bulbasaur">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/gameOverTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/game_over"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="30sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/youWonTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:text="@string/congrast_you_won"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gameOverTextView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
+    
 
 
 </RelativeLayout>
