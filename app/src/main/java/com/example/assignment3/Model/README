@@ -3,6 +3,8 @@ For testing purposes only
 
 import Model.ScanBoard;
 
+import java.util.Scanner;
+
 public class Main {
     private static final int ROWS = 5;
     private static final int COLS = 4;
@@ -12,10 +14,45 @@ public class Main {
     public static int[][] numberOfMines = new int[COLS][ROWS];
     private static String BOMB = "X";
     private static String NOBOMB = ".";
+    private static Scanner in = new Scanner(System.in);
 
     public static void main(String []arg){
         ScanBoard board = new ScanBoard(ROWS,COLS,MINES);
         mine = board.mineBoard();
+        mineNum = board.numBoard(mine);
+        show();
+        int times = MINES;
+        boolean isDone = false;
+        while(!isDone) {
+            System.out.println("size" + board.occupiedMineList.size());
+            System.out.print("Enter: ");
+            String choice = in.nextLine();
+
+            switch (choice) {
+                case "w":
+                    //update funtions start demo
+                    board.occupiedMineList.add(1);
+                    System.out.println("test" + board.occupiedMineList.size());
+                    board.updateMineBoard();
+                    mineNum = board.numBoard(mine);
+                    show();
+                    //update function end
+                    times--;
+                    break;
+                case "p":
+                    System.out.println("p");
+                    break;
+                default:
+                    break;
+            }
+            if(times == 0){
+                isDone = true;
+            }
+        }
+
+
+    }
+    private static void show(){
         for(int row = 0; row < ROWS; row++){
             for(int col = 0; col < COLS ; col++){
                 if(mine[col][row]){
@@ -26,14 +63,11 @@ public class Main {
             }
             System.out.println("");
         }
-        mineNum = board.numBoard(mine);
         for(int row = 0; row < ROWS; row++){
             for(int col = 0; col < COLS ; col++){
                 System.out.print(mineNum[col][row]);
             }
             System.out.println("");
         }
-
-        //System.out.println(mineNum.length);
     }
 }

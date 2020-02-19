@@ -1,6 +1,5 @@
 package com.example.assignment3.Model;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,12 +14,12 @@ public class Board {
     private int COLUMNS; //x
     private int MINES;
     private Random rand = new Random();
-    private List<Integer> occupiedMinesList = new ArrayList<>();
     private boolean[][] mineBoard;
     private final boolean MINE = true;
     private final boolean NOTMINE = false;
 
     public List<Points> minesList = new ArrayList<>();
+    public List<Integer> occupiedMinesList = new ArrayList<>(); //changes where the bombs are
 
     public Board(int ROWS, int COLS, int MINES){
         this.ROWS = ROWS;
@@ -40,6 +39,22 @@ public class Board {
         for(int i = 0; i < MINES; i++){
             placeMine();
         }
+        return mineBoard;
+    }
+
+    public boolean[][] updateBoard(){
+        for(int i = 0; i < occupiedMinesList.size(); i++) {
+            int occupiedMineX = minesList.get(occupiedMinesList.get(i)).getxDirection();
+            int occupiedMineY = minesList.get(occupiedMinesList.get(i)).getyDirection();
+            for (int row = 0; row < ROWS; row++) {
+                for (int col = 0; col < COLUMNS; col++) {
+                    if (row == occupiedMineY && col == occupiedMineX) {
+                        mineBoard[col][row] = MINE;
+                    }
+                }
+            }
+        }
+
         return mineBoard;
     }
 
