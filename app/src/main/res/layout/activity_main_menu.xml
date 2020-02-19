@@ -34,7 +34,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:text="@string/play_game"
-        app:layout_constraintEnd_toStartOf="@+id/cheeseImage"
+        app:layout_constraintEnd_toStartOf="@+id/pikachuImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainMenu" />
 
@@ -48,7 +48,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:text="@string/options"
-        app:layout_constraintEnd_toStartOf="@+id/cheeseImage"
+        app:layout_constraintEnd_toStartOf="@+id/pikachuImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStart" />
 
@@ -62,12 +62,12 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:text="@string/help"
-        app:layout_constraintEnd_toStartOf="@+id/cheeseImage"
+        app:layout_constraintEnd_toStartOf="@+id/pikachuImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnOptions" />
 
     <ImageView
-        android:id="@+id/cheeseImage"
+        android:id="@+id/pikachuImage"
         android:layout_width="242dp"
         android:layout_height="246dp"
         android:layout_marginEnd="16dp"

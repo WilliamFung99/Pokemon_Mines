@@ -36,6 +36,10 @@
         <item>20 mines</item>
     </string-array>
     <string name="title_activity_help">Help</string>
+    <string name="game_over">GAME OVER</string>
+    <string name="congrast_you_won">Congratulations! You won!</string>
+    <string name="ok">OK</string>
+
 
 
 </resources>
