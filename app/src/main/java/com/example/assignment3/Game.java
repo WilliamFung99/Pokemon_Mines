@@ -1,5 +1,7 @@
 package com.example.assignment3;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -18,5 +20,10 @@ public class Game extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
     }
+
+    public static Intent makeIntentForGame(Context context){
+        return new Intent(context, Game.class);
+    }
+
 
 }

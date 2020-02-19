@@ -20,6 +20,7 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
         setUpOptionsBtn();
         setUpHelpBtn();
+        setUpPlayGameBtn();
     }
 
     private void setUpOptionsBtn(){
@@ -45,6 +46,20 @@ public class MainMenu extends AppCompatActivity {
 
     }
 
+
+    private void setUpPlayGameBtn(){
+
+        Button playButton = (Button) findViewById(R.id.btnStart);
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = Game.makeIntentForGame(MainMenu.this);
+                startActivity(intent);
+            }
+        });
+
+
+    }
 
 
 }
