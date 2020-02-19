@@ -20,7 +20,7 @@
     <string name="help">Help</string>
     <string name="about_the_author">About the author: </string>
     <string name="CMPT276_Link">
-        <a href = "https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home">CMPT276 Home Page</a>
+        <a href="https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home">CMPT276 Home Page</a>
     </string>
     <string name="number_of_mines">Number Of Mines</string>
     <string-array name="boardSizes">
@@ -39,7 +39,7 @@
     <string name="game_over">GAME OVER</string>
     <string name="congrast_you_won">Congratulations! You won!</string>
     <string name="ok">OK</string>
-
+    <string name="title_activity_game">Game</string>
 
 
 </resources>
