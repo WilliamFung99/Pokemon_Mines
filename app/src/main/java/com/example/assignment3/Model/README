@@ -1,19 +1,39 @@
 How to initialize the board:
 For testing purposes only
 
+import Model.ScanBoard;
+
 public class Main {
     private static final int ROWS = 5;
     private static final int COLS = 4;
-    private static final int MINES = 20;
-    public static boolean[][] mine = new boolean[COLS][ROWS];
+    private static final int MINES = 2;
+    private static boolean[][] mine = new boolean[COLS][ROWS];
+    private static int[][] mineNum = new int[COLS][ROWS];
+    public static int[][] numberOfMines = new int[COLS][ROWS];
+    private static String BOMB = "X";
+    private static String NOBOMB = ".";
 
     public static void main(String []arg){
-        Board board = new Board(ROWS,COLS,MINES);
-        mine = board.initializeBoardWithMines();
+        ScanBoard board = new ScanBoard(ROWS,COLS,MINES);
+        mine = board.mineBoard();
         for(int row = 0; row < ROWS; row++){
             for(int col = 0; col < COLS ; col++){
-                System.out.println("MINE AT ROW = " + row + " COLUMN " + col + " is " + mine[col][row]);
+                if(mine[col][row]){
+                    System.out.print(BOMB);
+                }else{
+                    System.out.print(NOBOMB);
+                }
             }
+            System.out.println("");
         }
+        mineNum = board.numBoard(mine);
+        for(int row = 0; row < ROWS; row++){
+            for(int col = 0; col < COLS ; col++){
+                System.out.print(mineNum[col][row]);
+            }
+            System.out.println("");
+        }
+
+        //System.out.println(mineNum.length);
     }
 }

@@ -15,12 +15,12 @@ public class Board {
     private int COLUMNS; //x
     private int MINES;
     private Random rand = new Random();
-    private List<Points> minesList = new ArrayList<>();
     private List<Integer> occupiedMinesList = new ArrayList<>();
     private boolean[][] mineBoard;
+    private final boolean MINE = true;
+    private final boolean NOTMINE = false;
 
-    public final boolean MINE = true;
-    public final boolean NOTMINE = false;
+    public List<Points> minesList = new ArrayList<>();
 
     public Board(int ROWS, int COLS, int MINES){
         this.ROWS = ROWS;
