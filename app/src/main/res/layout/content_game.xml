@@ -8,4 +8,16 @@
     tools:context=".Game"
     tools:showIn="@layout/activity_game">
 
+    <TableLayout
+        android:id="@+id/tableForPokeballs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:stretchColumns="*"
+        android:background="@color/colorGreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
