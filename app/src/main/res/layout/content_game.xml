@@ -19,7 +19,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="32dp"
-        android:background="@color/colorGreen"
+        android:background="@color/colorWhite"
         android:gravity="center"
         android:stretchColumns="*"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,5 +41,29 @@
         android:text="@string/found_number_of_mines"
         android:textColor="@color/colorBlack"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/scanUsedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:text="@string/number_of_scan_used_text"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintEnd_toStartOf="@+id/numberOfScansUsedTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/numberOfScansUsedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/scans_used"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
