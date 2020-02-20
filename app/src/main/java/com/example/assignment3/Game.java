@@ -23,6 +23,9 @@ import android.widget.Toast;
 
 import com.example.assignment3.Model.ScanBoard;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game extends AppCompatActivity {
 
     private static final int ROWS = 4;
@@ -34,13 +37,18 @@ public class Game extends AppCompatActivity {
 
     private static final int RESOLUTION = 100;
 
+    private List<Integer> visibleColumns = new ArrayList<>();
+    private List<Integer> visibleRows = new ArrayList<>();
+
     Button buttons[][] = new Button[ROWS][COLUMNS];
+
+    ScanBoard board = new ScanBoard(ROWS,COLUMNS,MINES);
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        ScanBoard board = new ScanBoard(ROWS,COLUMNS,MINES);
+       // ScanBoard board = new ScanBoard(ROWS,COLUMNS,MINES);
         mine = board.mineBoard();
         mineNum = board.numBoard(mine);
 
@@ -105,11 +113,12 @@ public class Game extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void gridButtonClicked(int column, int row) {
-
+        boolean isPokemonFound = false;
         Toast.makeText(this, "Button Clicked: " + row + "," + column, Toast.LENGTH_SHORT).show();
-
+        Button button = buttons[row][column];
         if(mine[column][row]) {
-            Button button = buttons[row][column];
+
+            //Button button = buttons[row][column];
 
             //lock button sizes
             lockButtonSizes();
@@ -117,6 +126,7 @@ public class Game extends AppCompatActivity {
             //button.setBackgroundResource(R.drawable.pokemon_ball);
 
             //Scale Image to button
+
             int newWidth = button.getHeight();
             int newHeight = button.getHeight();
             Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.charzard);
@@ -126,8 +136,9 @@ public class Game extends AppCompatActivity {
 
             //change text on button
             button.setText("0");
+            isPokemonFound = true;
         }else{
-            Button button = buttons[row][column];
+            //Button button = buttons[row][column];
 
             //lock button sizes
             lockButtonSizes();
@@ -144,8 +155,23 @@ public class Game extends AppCompatActivity {
 
             //change text on button
             button.setText("" + mineNum[column][row]);
-
         }
+        visibleRows.add(row);
+        visibleColumns.add(column);
+        if(isPokemonFound) {
+            update(column,row);
+            for(int size = 0; size < visibleRows.size();size++) {
+                for (int i = 0; i < COLUMNS; i++) {
+                    for (int j = 0; j < ROWS; j++) {
+                        if(visibleColumns.get(size) == i && visibleRows.get(size) == j){
+                        Button buttonUpdate = buttons[j][i];
+                        buttonUpdate.setText("" + mineNum[i][j]);
+                        }
+                    }
+                }
+            }
+        }
+
 
     }
 
@@ -168,6 +194,18 @@ public class Game extends AppCompatActivity {
 
     public static Intent makeIntentForGame(Context context){
         return new Intent(context, Game.class);
+    }
+
+    private void update(int column, int row){
+        int index = column + row * COLUMNS;
+        for(int i = 0 ; i < board.occupiedMineList.size(); i++) {
+            if(index == board.occupiedMineList.get(i)){
+                board.occupiedMineList.remove(i);
+                break;
+            }
+        }
+        mine = board.updateMineBoard();
+        mineNum = board.numBoard(mine);
     }
 
 
