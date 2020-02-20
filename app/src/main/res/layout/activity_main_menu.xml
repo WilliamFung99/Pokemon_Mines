@@ -33,8 +33,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/charmander"
+        android:background="@drawable/round_button_red"
+        android:drawableLeft="@drawable/charmander_flipped"
+        android:drawableRight="@drawable/image2vector"
+        android:paddingLeft="40dp"
+        android:paddingRight="30dp"
         android:text="@string/play_game"
+        android:textAlignment="center"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toStartOf="@+id/pikachuImage"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +54,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/squirtle"
+        android:background="@drawable/round_button_blue"
         android:text="@string/options"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toStartOf="@+id/pikachuImage"
@@ -65,9 +70,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/bulb"
+        android:background="@drawable/round_button"
         android:text="@string/help"
-
         android:textColor="@color/colorWhite"
         android:textColorHighlight="@color/colorAccent"
         app:layout_constraintEnd_toStartOf="@+id/pikachuImage"
@@ -87,4 +91,5 @@
         app:layout_constraintTop_toBottomOf="@+id/mainMenu"
         app:layout_constraintVertical_bias="0.266"
         app:srcCompat="@drawable/pikachuimage" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
