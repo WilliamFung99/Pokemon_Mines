@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Path;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.provider.FontsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,39 +30,51 @@ import java.util.List;
 
 public class Game extends AppCompatActivity {
 
-    private static final int ROWS = 4;
-    private static final int COLUMNS = 6;
-    private static final int MINES = 8;
+    private int ROWS = 4;
+    private int COLUMNS = 6;
+    private int MINES = 8;
 
-    private static boolean[][] mine = new boolean[COLUMNS][ROWS];
-    private static int[][] mineNum = new int[COLUMNS][ROWS];
+    private boolean[][] mine;
+    private int[][] mineNum;
 
     private static final int RESOLUTION = 100;
 
     private List<Integer> visibleColumns = new ArrayList<>();
     private List<Integer> visibleRows = new ArrayList<>();
 
-    Button buttons[][] = new Button[ROWS][COLUMNS];
+    Button buttons[][];
 
-    ScanBoard board = new ScanBoard(ROWS,COLUMNS,MINES);
+    ScanBoard board;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
        // ScanBoard board = new ScanBoard(ROWS,COLUMNS,MINES);
-        mine = board.mineBoard();
-        mineNum = board.numBoard(mine);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
         populatePokeballs();
+        mine = board.mineBoard();
+        mineNum = board.numBoard(mine);
+
+
 
     }
-
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void populatePokeballs() {
+        ROWS = Options.getChosenRow(this);
+        COLUMNS = Options.getChosenColumn(this);
+        MINES = Options.getNumberOfMines(this);
+        mine  = new boolean[COLUMNS][ROWS];
+        mineNum = new int[COLUMNS][ROWS];
+        buttons = new Button[ROWS][COLUMNS];
+        board = new ScanBoard(ROWS,COLUMNS,MINES);
+
+        Log.d("option row is: ", ""+Options.getChosenRow(this));
+        Log.d("option col is: ", ""+Options.getChosenColumn(this));
+        Log.d("option mine is: ", ""+Options.getNumberOfMines(this));
+
 
         TableLayout table = (TableLayout)findViewById(R.id.tableForPokeballs);
 
