@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.assignment3.Model.ScanBoard;
@@ -42,9 +43,13 @@ public class Game extends AppCompatActivity {
 
     private List<Integer> charzardIndex = new ArrayList<>();
 
+    private List<Integer> scannedIndex = new ArrayList<>();
+
     Button buttons[][] = new Button[ROWS][COLUMNS];
 
     ScanBoard board = new ScanBoard(ROWS,COLUMNS,MINES);
+
+    private int scans = 0;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -117,9 +122,11 @@ public class Game extends AppCompatActivity {
     private void gridButtonClicked(int column, int row) {
         boolean isPokemonFound = false;
         Button button = buttons[row][column];
-        int mineIndex = column + row * COLUMNS;
+
+        int index = column + row * COLUMNS;
+
         if(mine[column][row]) {
-            charzardIndex.add(mineIndex);
+            charzardIndex.add(index);
             //Button button = buttons[row][column];
 
             //lock button sizes
@@ -157,15 +164,15 @@ public class Game extends AppCompatActivity {
             button.setBackground(new BitmapDrawable(resource, scaleBitmap));
 
             for(int i = 0; i < charzardIndex.size(); i++){
-                if(mineIndex == charzardIndex.get(i)){
+                if(index == charzardIndex.get(i)){
                     originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.charzard);
                     scaleBitmap = Bitmap.createScaledBitmap(originalBitmap, RESOLUTION, RESOLUTION, true);
                     resource = getResources();
                     button.setBackground(new BitmapDrawable(resource, scaleBitmap));
                 }
             }
+            setTextOnScreen(index);
 
-            //change text on button
             button.setText("" + mineNum[column][row]);
         }
         if(!isPokemonFound) {
@@ -176,6 +183,21 @@ public class Game extends AppCompatActivity {
             update(column,row);
         }
 
+
+    }
+    private void setTextOnScreen(int index){
+        boolean isScanned = false;
+        for(int indices = 0 ; indices < scannedIndex.size(); indices++) {
+            if(index == scannedIndex.get(indices)){
+                isScanned = true;
+            }
+        }
+        if(!isScanned){
+            scannedIndex.add(index);
+            scans++;
+            TextView numberScans = findViewById(R.id.numberOfScansUsedTextView);
+            numberScans.setText("" + scans);
+        }
 
     }
 
