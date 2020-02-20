@@ -40,6 +40,7 @@
     <string name="congrast_you_won">Congratulations! You won!</string>
     <string name="ok">OK</string>
     <string name="title_activity_game">Game</string>
+    <string name="found_number_of_mines">Found 0 of 0 Mines</string>
 
 
 </resources>

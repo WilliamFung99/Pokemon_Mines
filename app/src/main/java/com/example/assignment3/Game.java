@@ -9,34 +9,38 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
 public class Game extends AppCompatActivity {
 
-    private static final int ROWS = 5;
-    private static final int COLUMNS = 5;
+    private static final int ROWS = 4;
+    private static final int COLUMNS = 6;
+
+    private static final int RESOLUTION = 100;
 
     Button buttons[][] = new Button[ROWS][COLUMNS];
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
         populatePokeballs();
+
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void populatePokeballs() {
 
         TableLayout table = (TableLayout)findViewById(R.id.tableForPokeballs);
@@ -47,8 +51,6 @@ public class Game extends AppCompatActivity {
                     TableLayout.LayoutParams.MATCH_PARENT,
                     TableLayout.LayoutParams.MATCH_PARENT,
                     1.0f));
-
-
             table.addView(tableRow);
 
             for(int c = 0; c < COLUMNS; c++){
@@ -61,11 +63,17 @@ public class Game extends AppCompatActivity {
                         TableRow.LayoutParams.MATCH_PARENT,
                         TableRow.LayoutParams.MATCH_PARENT,
                         1.0f));
-                //button.setBackgroundResource(R.drawable.pokemon_ball);
-                button.setText(" " + c +  ", " +  r);
+
+
+
+                Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.pokemon_ball);
+                Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,RESOLUTION,RESOLUTION,true);
+                Resources resource = getResources();
+                button.setBackground(new BitmapDrawable(resource,scaleBitmap));
 
                 //make text not clip on small buttons
                 button.setPadding(0,0,0,0);
+
                 button.setOnClickListener(new View.OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                     @Override
@@ -75,9 +83,9 @@ public class Game extends AppCompatActivity {
                     }
                 });
 
-
                 tableRow.addView(button);
                 buttons[r][c] = button ;
+
             }
         }
 
@@ -93,17 +101,14 @@ public class Game extends AppCompatActivity {
 
         //lock button sizes
         lockButtonSizes();
-
-
         //Does not scale Image
         //button.setBackgroundResource(R.drawable.pokemon_ball);
 
         //Scale Image to button
-
-        int newWidth = button.getWidth();
-        int newHeigt = button.getHeight();
-        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.pokemon_ball);
-        Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeigt,true);
+        int newWidth = button.getHeight();
+        int newHeight = button.getHeight();
+        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.bulbasaur);
+        Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,RESOLUTION,RESOLUTION,true);
         Resources resource = getResources();
         button.setBackground(new BitmapDrawable(resource,scaleBitmap));
 
@@ -125,8 +130,6 @@ public class Game extends AppCompatActivity {
                 int height = button.getHeight();
                 button.setMinHeight(height);
                 button.setMaxHeight(height);
-
-
 
             }
         }
