@@ -40,6 +40,8 @@ public class Game extends AppCompatActivity {
     private List<Integer> visibleColumns = new ArrayList<>();
     private List<Integer> visibleRows = new ArrayList<>();
 
+    private List<Integer> charzardIndex = new ArrayList<>();
+
     Button buttons[][] = new Button[ROWS][COLUMNS];
 
     ScanBoard board = new ScanBoard(ROWS,COLUMNS,MINES);
@@ -115,8 +117,9 @@ public class Game extends AppCompatActivity {
     private void gridButtonClicked(int column, int row) {
         boolean isPokemonFound = false;
         Button button = buttons[row][column];
+        int mineIndex = column + row * COLUMNS;
         if(mine[column][row]) {
-
+            charzardIndex.add(mineIndex);
             //Button button = buttons[row][column];
 
             //lock button sizes
@@ -147,10 +150,20 @@ public class Game extends AppCompatActivity {
             //Scale Image to button
             int newWidth = button.getHeight();
             int newHeight = button.getHeight();
+
             Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.open_pokeball);
             Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap, RESOLUTION, RESOLUTION, true);
             Resources resource = getResources();
             button.setBackground(new BitmapDrawable(resource, scaleBitmap));
+
+            for(int i = 0; i < charzardIndex.size(); i++){
+                if(mineIndex == charzardIndex.get(i)){
+                    originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.charzard);
+                    scaleBitmap = Bitmap.createScaledBitmap(originalBitmap, RESOLUTION, RESOLUTION, true);
+                    resource = getResources();
+                    button.setBackground(new BitmapDrawable(resource, scaleBitmap));
+                }
+            }
 
             //change text on button
             button.setText("" + mineNum[column][row]);
