@@ -119,13 +119,13 @@ public class Game extends AppCompatActivity {
             //Scale Image to button
             int newWidth = button.getHeight();
             int newHeight = button.getHeight();
-            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bulbasaur);
+            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.charzard);
             Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap, RESOLUTION, RESOLUTION, true);
             Resources resource = getResources();
             button.setBackground(new BitmapDrawable(resource, scaleBitmap));
 
             //change text on button
-            button.setText("" + column);
+            button.setText("0");
         }else{
             Button button = buttons[row][column];
 
@@ -143,7 +143,7 @@ public class Game extends AppCompatActivity {
             button.setBackground(new BitmapDrawable(resource, scaleBitmap));
 
             //change text on button
-            button.setText("" + column);
+            button.setText("" + mineNum[column][row]);
 
         }
 

@@ -2,6 +2,10 @@ package com.example.assignment3.Model;
 
 import java.util.List;
 
+/**
+ * Numbers associated for horizontal and vertical pokemon
+ */
+
 public class ScanBoard {
     private int ROWS;
     private int COLS;

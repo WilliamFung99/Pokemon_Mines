@@ -43,20 +43,31 @@ public class Board {
     }
 
     public boolean[][] updateBoard(){
+        reset();
         for(int i = 0; i < occupiedMinesList.size(); i++) {
             int occupiedMineX = minesList.get(occupiedMinesList.get(i)).getxDirection();
             int occupiedMineY = minesList.get(occupiedMinesList.get(i)).getyDirection();
             for (int row = 0; row < ROWS; row++) {
                 for (int col = 0; col < COLUMNS; col++) {
                     if (row == occupiedMineY && col == occupiedMineX) {
+                        System.out.println("i is " + i + " having col " + col + " and row " + row);
                         mineBoard[col][row] = MINE;
+
                     }
                 }
             }
         }
-
         return mineBoard;
     }
+
+    private void reset() {
+        for (int row = 0; row < ROWS; row++) {
+            for (int col = 0; col < COLUMNS; col++) {
+                mineBoard[col][row] = NOTMINE;
+            }
+        }
+    }
+
 
     private void initializeMineList(){
         for(int row = 0; row < ROWS; row++){
