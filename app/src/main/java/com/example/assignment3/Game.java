@@ -21,10 +21,16 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
+import com.example.assignment3.Model.ScanBoard;
+
 public class Game extends AppCompatActivity {
 
     private static final int ROWS = 4;
     private static final int COLUMNS = 6;
+    private static final int MINES = 2;
+
+    private static boolean[][] mine = new boolean[COLUMNS][ROWS];
+    private static int[][] mineNum = new int[COLUMNS][ROWS];
 
     private static final int RESOLUTION = 100;
 
@@ -33,6 +39,11 @@ public class Game extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        ScanBoard board = new ScanBoard(ROWS,COLUMNS,MINES);
+        mine = board.mineBoard();
+        mineNum = board.numBoard(mine);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
@@ -66,7 +77,7 @@ public class Game extends AppCompatActivity {
 
 
 
-                Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.pokemon_ball);
+                Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.closed_pokeball);
                 Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,RESOLUTION,RESOLUTION,true);
                 Resources resource = getResources();
                 button.setBackground(new BitmapDrawable(resource,scaleBitmap));
@@ -95,26 +106,46 @@ public class Game extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void gridButtonClicked(int column, int row) {
 
-        Toast.makeText(this, "Button Clicked: " + column + "," + row, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Button Clicked: " + row + "," + column, Toast.LENGTH_SHORT).show();
 
-        Button button = buttons[row][column];
+        if(mine[column][row]) {
+            Button button = buttons[row][column];
 
-        //lock button sizes
-        lockButtonSizes();
-        //Does not scale Image
-        //button.setBackgroundResource(R.drawable.pokemon_ball);
+            //lock button sizes
+            lockButtonSizes();
+            //Does not scale Image
+            //button.setBackgroundResource(R.drawable.pokemon_ball);
 
-        //Scale Image to button
-        int newWidth = button.getHeight();
-        int newHeight = button.getHeight();
-        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.bulbasaur);
-        Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,RESOLUTION,RESOLUTION,true);
-        Resources resource = getResources();
-        button.setBackground(new BitmapDrawable(resource,scaleBitmap));
+            //Scale Image to button
+            int newWidth = button.getHeight();
+            int newHeight = button.getHeight();
+            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bulbasaur);
+            Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap, RESOLUTION, RESOLUTION, true);
+            Resources resource = getResources();
+            button.setBackground(new BitmapDrawable(resource, scaleBitmap));
 
-        //change text on button
-        button.setText("" + column);
+            //change text on button
+            button.setText("" + column);
+        }else{
+            Button button = buttons[row][column];
 
+            //lock button sizes
+            lockButtonSizes();
+            //Does not scale Image
+            //button.setBackgroundResource(R.drawable.pokemon_ball);
+
+            //Scale Image to button
+            int newWidth = button.getHeight();
+            int newHeight = button.getHeight();
+            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.open_pokeball);
+            Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap, RESOLUTION, RESOLUTION, true);
+            Resources resource = getResources();
+            button.setBackground(new BitmapDrawable(resource, scaleBitmap));
+
+            //change text on button
+            button.setText("" + column);
+
+        }
 
     }
 
