@@ -30,7 +30,7 @@ public class Game extends AppCompatActivity {
 
     private static final int ROWS = 4;
     private static final int COLUMNS = 6;
-    private static final int MINES = 2;
+    private static final int MINES = 8;
 
     private static boolean[][] mine = new boolean[COLUMNS][ROWS];
     private static int[][] mineNum = new int[COLUMNS][ROWS];
@@ -114,7 +114,6 @@ public class Game extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void gridButtonClicked(int column, int row) {
         boolean isPokemonFound = false;
-        Toast.makeText(this, "Button Clicked: " + row + "," + column, Toast.LENGTH_SHORT).show();
         Button button = buttons[row][column];
         if(mine[column][row]) {
 
@@ -135,7 +134,7 @@ public class Game extends AppCompatActivity {
             button.setBackground(new BitmapDrawable(resource, scaleBitmap));
 
             //change text on button
-            button.setText("0");
+            //button.setText("0");
             isPokemonFound = true;
         }else{
             //Button button = buttons[row][column];
@@ -156,20 +155,12 @@ public class Game extends AppCompatActivity {
             //change text on button
             button.setText("" + mineNum[column][row]);
         }
-        visibleRows.add(row);
-        visibleColumns.add(column);
+        if(!isPokemonFound) {
+            visibleRows.add(row);
+            visibleColumns.add(column);
+        }
         if(isPokemonFound) {
             update(column,row);
-            for(int size = 0; size < visibleRows.size();size++) {
-                for (int i = 0; i < COLUMNS; i++) {
-                    for (int j = 0; j < ROWS; j++) {
-                        if(visibleColumns.get(size) == i && visibleRows.get(size) == j){
-                        Button buttonUpdate = buttons[j][i];
-                        buttonUpdate.setText("" + mineNum[i][j]);
-                        }
-                    }
-                }
-            }
         }
 
 
@@ -206,6 +197,17 @@ public class Game extends AppCompatActivity {
         }
         mine = board.updateMineBoard();
         mineNum = board.numBoard(mine);
+
+        for(int size = 0; size < visibleRows.size();size++) {
+            for (int i = 0; i < COLUMNS; i++) {
+                for (int j = 0; j < ROWS; j++) {
+                    if(visibleColumns.get(size) == i && visibleRows.get(size) == j){
+                        Button buttonUpdate = buttons[j][i];
+                        buttonUpdate.setText("" + mineNum[i][j]);
+                    }
+                }
+            }
+        }
     }
 
 
