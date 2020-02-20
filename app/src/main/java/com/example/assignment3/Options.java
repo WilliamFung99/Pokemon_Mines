@@ -30,8 +30,6 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
     List<String> boardSizes = new ArrayList<>();
     List<String> minesSizes = new ArrayList<>();
 
-
-
     ArrayAdapter<String> boardSizeAdapter;
     ArrayAdapter<String> numberOfMinesAdapter;
 
@@ -56,58 +54,61 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
 
     private void setUpBoardSizeSpinner(){
 
-        int[] fourBySix = getResources().getIntArray(R.array.four_by_six);
-        int[] fiveByTen = getResources().getIntArray(R.array.five_by_ten);
-        int[] sixByFifteen = getResources().getIntArray(R.array.six_by_fifteen);
+        for(int i = 0; i< getResources().getIntArray(R.array.row_sizes).length; i++){
+            boardSizes.add( getResources().getIntArray(R.array.row_sizes)[i] + " by " +  getResources().getIntArray(R.array.col_sizes)[i]);
 
-        boardSizes.add( Integer.toString(fourBySix[0]) + " by " +  Integer.toString(fourBySix[1]));
-        boardSizes.add( Integer.toString(fiveByTen[0]) + " by " +  Integer.toString(fiveByTen[1]));
-        boardSizes.add( Integer.toString(sixByFifteen[0]) + " by " +  Integer.toString(sixByFifteen[1]));
-
+        }
 
         boardSizeSpinner = (Spinner) findViewById(R.id.boardSizeSpinner);
         boardSizeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, boardSizes);
         boardSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         boardSizeSpinner.setAdapter(boardSizeAdapter);
-        boardSizeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){
-                    case 0:
-                        Log.d("case 0", "4 by 6");
-                        chosenRow = 4;
-                        chosenColumn = 6;
 
-                        saveBoardSize(chosenRow, chosenColumn);
+        for(int i = 0; i < boardSizes.size(); i++){
+            int rowSizedSelected = getResources().getIntArray(R.array.row_sizes)[i];
+            boardSizeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    switch (position) {
+                        case 0:
+                            chosenRow = getResources().getIntArray(R.array.row_sizes)[0];
+                            chosenColumn = getResources().getIntArray(R.array.col_sizes)[0];
 
-                        break;
+                            saveBoardSize(chosenRow, chosenColumn);
 
-                    case 1:
-                        Log.d("case 1", "5 by 10");
-                        chosenRow = 5;
-                        chosenColumn = 10;
-                        saveBoardSize(chosenRow, chosenColumn);
+                            break;
 
-                        break;
-                    case 2:
-                        Log.d("case 2", "6 by 15");
-                        chosenRow = 6;
-                        chosenColumn = 15;
-                        saveBoardSize(chosenRow, chosenColumn);
+                        case 1:
+                            chosenRow = getResources().getIntArray(R.array.row_sizes)[1];
+                            chosenColumn = getResources().getIntArray(R.array.col_sizes)[1];
+                            saveBoardSize(chosenRow, chosenColumn);
 
-                        break;
+                            break;
+                        case 2:
+                            chosenRow = getResources().getIntArray(R.array.row_sizes)[2];
+                            chosenColumn = getResources().getIntArray(R.array.col_sizes)[2];
+                            saveBoardSize(chosenRow, chosenColumn);
 
-                    default:
-                        break;
+                            break;
+
+                        default:
+                            break;
+                    }
                 }
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
+                }
+            });
 
+
+        if( rowSizedSelected == getChosenRow(this)){
+            boardSizeSpinner.setSelection(i);
+        }
+
+
+        }
     }
 
     private void setUpNumberOfMinesSpinner(){
@@ -132,19 +133,16 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     switch (position) {
                         case 0:
-                            Log.d("case 0", "6 mines");
                             chosenMineNumber = numberOfMines[0];
                             saveNumberOfMines(chosenMineNumber);
                             break;
 
                         case 1:
-                            Log.d("case 1", "10 mines");
                             chosenMineNumber = numberOfMines[1];
                             saveNumberOfMines(chosenMineNumber);
 
                             break;
                         case 2:
-                            Log.d("case 2", "15 mines");
                             chosenMineNumber = numberOfMines[2];
                             saveNumberOfMines(chosenMineNumber);
 
@@ -152,7 +150,6 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
 
 
                         case 3:
-                            Log.d("case 3", "20 mines");
                             chosenMineNumber = numberOfMines[3];
                             saveNumberOfMines(chosenMineNumber);
 
