@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="four_by_six">
+        <item>4</item>
+        <item>6</item>
+    </integer-array>
+
+    <integer-array name="five_by_ten">
+        <item>5</item>
+        <item>10</item>
+    </integer-array>
+
+    <integer-array name="six_by_fifteen">
+        <item>6</item>
+        <item>15</item>
+    </integer-array>
+
+
+</resources>
