@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Main homepage of game containing
+ * "play game", "options" , and "help"
+ */
 public class MainMenu extends AppCompatActivity {
 
     public static Intent makeIntent(Context context){

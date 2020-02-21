@@ -36,6 +36,9 @@ import com.example.assignment3.Model.ScanBoard;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Game board that combines logic model with UI
+ */
 public class Game extends AppCompatActivity {
 
     private int ROWS;
@@ -51,7 +54,7 @@ public class Game extends AppCompatActivity {
     private List<Integer> visibleColumns = new ArrayList<>();
     private List<Integer> visibleRows = new ArrayList<>();
 
-    Button buttons[][];
+    Button [][] buttons;
 
     private List<Integer> charzardIndex = new ArrayList<>();
     private List<Integer> scannedIndex = new ArrayList<>();
@@ -59,7 +62,6 @@ public class Game extends AppCompatActivity {
     private int index;
     ScanBoard board;
     Dialog dialog;
-    Button congratsPopup;
     Button ok;
     ImageView close;
 
@@ -68,8 +70,6 @@ public class Game extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-       // ScanBoard board = new ScanBoard(ROWS,COLUMNS,MINES);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
@@ -80,8 +80,6 @@ public class Game extends AppCompatActivity {
         populatePokeballs();
         mine = board.mineBoard();
         mineNum = board.numBoard(mine);
-
-
 
     }
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -117,8 +115,6 @@ public class Game extends AppCompatActivity {
                         TableRow.LayoutParams.MATCH_PARENT,
                         1.0f));
 
-
-
                 Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.closed_pokeball);
                 Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,RESOLUTION,RESOLUTION,true);
                 Resources resource = getResources();
@@ -138,11 +134,8 @@ public class Game extends AppCompatActivity {
 
                 tableRow.addView(button);
                 buttons[r][c] = button ;
-
             }
         }
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -157,12 +150,10 @@ public class Game extends AppCompatActivity {
 
         if(mine[column][row]) {
             charzardIndex.add(index);
-            //Button button = buttons[row][column];
 
             //lock button sizes
             lockButtonSizes();
             //Does not scale Image
-            //button.setBackgroundResource(R.drawable.pokemon_ball);
 
             //Scale Image to button
 
@@ -173,17 +164,13 @@ public class Game extends AppCompatActivity {
             Resources resource = getResources();
             button.setBackground(new BitmapDrawable(resource, scaleBitmap));
 
-
             //change text on button
-            //button.setText("0");
             isPokemonFound = true;
         }else{
-            //Button button = buttons[row][column];
 
             //lock button sizes
             lockButtonSizes();
             //Does not scale Image
-            //button.setBackgroundResource(R.drawable.pokemon_ball);
 
             //Scale Image to button
             int newWidth = button.getHeight();
@@ -203,8 +190,8 @@ public class Game extends AppCompatActivity {
                 }
             }
             setScanTextOnScreen(index);
-
-            button.setText("" + mineNum[column][row]);
+            String msgMineNum = Integer.toString(mineNum[column][row]);
+            button.setText(msgMineNum);
         }
         if(!isPokemonFound) {
             visibleRows.add(row);
@@ -238,7 +225,6 @@ public class Game extends AppCompatActivity {
 
     private void endGameScreen(){
 
-        //setContentView(R.layout.content_game);
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.congrats_popup);
         close = (ImageView) dialog.findViewById(R.id.close);
@@ -288,7 +274,8 @@ public class Game extends AppCompatActivity {
             scannedIndex.add(index);
             scans++;
             TextView numberScans = findViewById(R.id.numberOfScansUsedTextView);
-            numberScans.setText("" + scans);
+            String msgScans = Integer.toString(scans);
+            numberScans.setText(msgScans);
             playPokeBallSound(index);
 
         }
@@ -347,7 +334,8 @@ public class Game extends AppCompatActivity {
                 for (int j = 0; j < ROWS; j++) {
                     if(visibleColumns.get(size) == i && visibleRows.get(size) == j){
                         Button buttonUpdate = buttons[j][i];
-                        buttonUpdate.setText("" + mineNum[i][j]);
+                        String msgMineNumber = Integer.toString(mineNum[i][j]);
+                        buttonUpdate.setText(msgMineNumber);
                     }
                 }
             }

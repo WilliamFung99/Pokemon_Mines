@@ -19,6 +19,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Setup board size and number of mines on board
+ * Display/reset high score and total times played
+ */
+
 public class Options extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private int chosenRow;
@@ -59,7 +64,6 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
 
             }
         });
-
 
     }
 
@@ -136,15 +140,12 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
 
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
-
                 }
             });
 
-
-        if( rowSizedSelected == getChosenRow(this)){
-            boardSizeSpinner.setSelection(i);
-        }
-
+            if( rowSizedSelected == getChosenRow(this)){
+                boardSizeSpinner.setSelection(i);
+            }
 
         }
     }
@@ -281,7 +282,7 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT);
+        //Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT);
     }
 
     @Override

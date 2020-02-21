@@ -22,15 +22,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Help button information
+ */
 public class Help extends AppCompatActivity {
 
     TextView homePageLink;
-
-    Dialog dialog;
-    Button congratsPopup;
-    Button ok;
-    ImageView close;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,40 +50,6 @@ public class Help extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
-    }
-
-    private void showCongratsPopup() {
-        dialog.setContentView(R.layout.congrats_popup);
-        close = (ImageView) dialog.findViewById(R.id.close);
-        ok = (Button) dialog.findViewById(R.id.btnOk);
-
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-        Window windowAlDl = dialog.getWindow();
-
-        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
-        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        windowAlDl.setAttributes(layoutParams);
-
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        dialog.show();
 
     }
 

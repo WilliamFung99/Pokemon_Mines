@@ -14,6 +14,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Animation screen
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

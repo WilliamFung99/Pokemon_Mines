@@ -3,7 +3,7 @@ package com.example.assignment3.Model;
 import java.util.List;
 
 /**
- * Numbers associated for horizontal and vertical pokemon
+ * Numbers associated for number of pokemon in horizontal and vertical direction of matrix
  */
 
 public class ScanBoard {

@@ -1,5 +1,8 @@
 package com.example.assignment3.Model;
 
+/**
+ * Points system for the matrix
+ */
 public class Points {
     private int xDirection;
     private int yDirection;
