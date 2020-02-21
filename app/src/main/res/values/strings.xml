@@ -44,6 +44,9 @@
     <string name="number_of_scan_used_text"># of Scans used: </string>
     <string name="scans_used">0</string>
     <string name="save">Save</string>
+    <string name="back">Back</string>
+    <string name="how_to_play">How to Play:</string>
+    <string name="instructions">Write something here...</string>
 
 
 </resources>
