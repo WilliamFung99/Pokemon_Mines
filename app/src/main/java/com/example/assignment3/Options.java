@@ -176,31 +176,23 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
 
     private void saveBoardSize(int row, int column) {
         SharedPreferences prefs = this.getSharedPreferences("AppPrefs", MODE_PRIVATE);
-
         SharedPreferences.Editor editor = prefs.edit();
-
         editor.putInt("row", row);
         editor.putInt("column", column);
         editor.apply();
     }
 
     private void saveNumberOfMines(int numberOfMines){
-
         SharedPreferences prefs = this.getSharedPreferences("MinePrefs", MODE_PRIVATE);
-
         SharedPreferences.Editor editor = prefs.edit();
-
         editor.putInt("mines", numberOfMines);
         editor.apply();
-
     }
+
     static public int getChosenRow(Context context){
         SharedPreferences prefs = context.getSharedPreferences("AppPrefs", MODE_PRIVATE);
-
         int defaultRow = context.getResources().getInteger(R.integer.default_row);
-
         return prefs.getInt("row", defaultRow);
-
     }
 
     static public int getChosenColumn(Context context){
@@ -212,9 +204,7 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
     static public int getNumberOfMines(Context context){
 
         SharedPreferences prefs = context.getSharedPreferences("MinePrefs", MODE_PRIVATE);
-
         int defaultMines = context.getResources().getInteger(R.integer.default_number_of_mines);
-
         return prefs.getInt("mines", defaultMines);
     }
 
