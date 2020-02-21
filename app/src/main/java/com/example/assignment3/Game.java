@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -54,7 +55,7 @@ public class Game extends AppCompatActivity {
     private List<Integer> charzardIndex = new ArrayList<>();
     private List<Integer> scannedIndex = new ArrayList<>();
     private int pokemonFound = 0;
-
+    private int index;
     ScanBoard board;
     Dialog dialog;
     Button congratsPopup;
@@ -141,10 +142,13 @@ public class Game extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void gridButtonClicked(int column, int row) {
+
+        MediaPlayer charzardSound = MediaPlayer.create(this,R.raw.charzard_sound_effect);
+
         boolean isPokemonFound = false;
         Button button = buttons[row][column];
 
-        int index = column + row * COLUMNS;
+        index = column + row * COLUMNS;
 
         if(mine[column][row]) {
             charzardIndex.add(index);
@@ -163,6 +167,7 @@ public class Game extends AppCompatActivity {
             Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap, RESOLUTION, RESOLUTION, true);
             Resources resource = getResources();
             button.setBackground(new BitmapDrawable(resource, scaleBitmap));
+
 
             //change text on button
             //button.setText("0");
@@ -192,7 +197,7 @@ public class Game extends AppCompatActivity {
                     button.setBackground(new BitmapDrawable(resource, scaleBitmap));
                 }
             }
-            setTextOnScreen(index);
+            setScanTextOnScreen(index);
 
             button.setText("" + mineNum[column][row]);
         }
@@ -201,6 +206,7 @@ public class Game extends AppCompatActivity {
             visibleColumns.add(column);
         }
         if(isPokemonFound) {
+            charzardSound.start();
             pokemonFound++;
             update(column,row);
 
@@ -251,7 +257,7 @@ public class Game extends AppCompatActivity {
         String pokemonText = ("Found " + pokemonFound + " of " + MINES + " Pokemons");
         pokemonFoundView.setText(pokemonText);
     }
-    private void setTextOnScreen(int index){
+    private void setScanTextOnScreen(int index){
         boolean isScanned = false;
         for(int indices = 0 ; indices < scannedIndex.size(); indices++) {
             if(index == scannedIndex.get(indices)){
@@ -259,12 +265,28 @@ public class Game extends AppCompatActivity {
             }
         }
         if(!isScanned){
+
             scannedIndex.add(index);
             scans++;
             TextView numberScans = findViewById(R.id.numberOfScansUsedTextView);
             numberScans.setText("" + scans);
+            playPokeBallSound(index);
+
         }
 
+    }
+    private void playPokeBallSound(int index){
+        boolean isCharzardPresent = false;
+        MediaPlayer pokeBallSound = MediaPlayer.create(this,R.raw.pokeball_opening);
+
+        for (int i = 0; i < charzardIndex.size(); i++) {
+            if (index == charzardIndex.get(i)) {
+                isCharzardPresent = true;
+            }
+        }
+        if(!isCharzardPresent){
+            pokeBallSound.start();
+        }
     }
 
     private void lockButtonSizes() {
