@@ -40,13 +40,20 @@ public class Help extends AppCompatActivity {
         homePageLink = (TextView)findViewById(R.id.hyperlinkTextView);
         homePageLink.setMovementMethod(LinkMovementMethod.getInstance());
 
-        dialog = new Dialog(this);
-        congratsPopup.setOnClickListener(new View.OnClickListener() {
+        setUpBackButton();
+
+    }
+
+    private void setUpBackButton() {
+        Button backButton = (Button) findViewById(R.id.btnBack);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showCongratsPopup();
+                finish();
             }
         });
+
 
 
     }
