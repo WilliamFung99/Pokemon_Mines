@@ -1,4 +1,4 @@
-package com.example.assignment3;
+package com.example.assignment3.UI;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -7,7 +7,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.Path;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
@@ -18,20 +17,17 @@ import android.os.Bundle;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.provider.FontsContract;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.assignment3.Model.ScanBoard;
+import com.example.assignment3.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -233,7 +229,7 @@ public class Game extends AppCompatActivity {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Game.this,MainMenu.class));
+                startActivity(new Intent(Game.this, MainMenu.class));
             }
         });
         ok.setOnClickListener(new View.OnClickListener() {

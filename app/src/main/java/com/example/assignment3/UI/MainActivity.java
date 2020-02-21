@@ -1,9 +1,9 @@
-package com.example.assignment3;
+package com.example.assignment3.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.assignment3.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
