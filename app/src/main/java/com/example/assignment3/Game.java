@@ -44,6 +44,11 @@ public class Game extends AppCompatActivity {
 
     Button buttons[][];
 
+    private List<Integer> charzardIndex = new ArrayList<>();
+
+    private List<Integer> scannedIndex = new ArrayList<>();
+
+
     ScanBoard board;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
