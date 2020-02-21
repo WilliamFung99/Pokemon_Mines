@@ -41,9 +41,6 @@ public class Help extends AppCompatActivity {
         homePageLink.setMovementMethod(LinkMovementMethod.getInstance());
 
         dialog = new Dialog(this);
-
-        congratsPopup = (Button) findViewById(R.id.btncongrats);
-
         congratsPopup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
