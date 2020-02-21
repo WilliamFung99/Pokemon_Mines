@@ -1,12 +1,15 @@
 package com.example.assignment3;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -17,8 +20,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.provider.FontsContract;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -50,6 +56,10 @@ public class Game extends AppCompatActivity {
     private int pokemonFound = 0;
 
     ScanBoard board;
+    Dialog dialog;
+    Button congratsPopup;
+    Button ok;
+    ImageView close;
 
     private int scans = 0;
 
@@ -196,7 +206,46 @@ public class Game extends AppCompatActivity {
 
         }
         createTotalPokemonCollectedView();
+        if(pokemonFound == MINES){
+            endGameScreen();
+        }
     }
+
+    private void endGameScreen(){
+
+        //setContentView(R.layout.content_game);
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.congrats_popup);
+        close = (ImageView) dialog.findViewById(R.id.close);
+        ok = (Button) dialog.findViewById(R.id.btnOk);
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Game.this,MainMenu.class));
+            }
+        });
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Game.this,MainMenu.class));
+            }
+        });
+
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        Window windowAlDl = dialog.getWindow();
+
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        windowAlDl.setAttributes(layoutParams);
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        dialog.show();
+
+    }
+
     private void createTotalPokemonCollectedView(){
         TextView pokemonFoundView = findViewById(R.id.pokemonsFoundTextView);
         String pokemonText = ("Found " + pokemonFound + " of " + MINES + " Pokemons");
