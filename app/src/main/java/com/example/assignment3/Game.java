@@ -211,6 +211,8 @@ public class Game extends AppCompatActivity {
             visibleColumns.add(column);
         }
         if(isPokemonFound) {
+            float sound = (float) 1.0;
+            charzardSound.setVolume(sound, sound);
             charzardSound.start();
             pokemonFound++;
             update(column,row);
@@ -302,6 +304,8 @@ public class Game extends AppCompatActivity {
             }
         }
         if(!isCharzardPresent){
+            float lowerSound = (float) 0.2;
+            pokeBallSound.setVolume(lowerSound, lowerSound);
             pokeBallSound.start();
         }
     }
