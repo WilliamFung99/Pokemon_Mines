@@ -47,7 +47,7 @@ public class Game extends AppCompatActivity {
 
     private List<Integer> charzardIndex = new ArrayList<>();
     private List<Integer> scannedIndex = new ArrayList<>();
-
+    private int pokemonFound = 0;
 
     ScanBoard board;
 
@@ -77,6 +77,8 @@ public class Game extends AppCompatActivity {
         mineNum = new int[COLUMNS][ROWS];
         buttons = new Button[ROWS][COLUMNS];
         board = new ScanBoard(ROWS,COLUMNS,MINES);
+
+        createTotalPokemonCollectedView();
 
         TableLayout table = (TableLayout)findViewById(R.id.tableForPokeballs);
 
@@ -189,10 +191,16 @@ public class Game extends AppCompatActivity {
             visibleColumns.add(column);
         }
         if(isPokemonFound) {
+            pokemonFound++;
             update(column,row);
+
         }
-
-
+        createTotalPokemonCollectedView();
+    }
+    private void createTotalPokemonCollectedView(){
+        TextView pokemonFoundView = findViewById(R.id.pokemonsFoundTextView);
+        String pokemonText = ("Found " + pokemonFound + " of " + MINES + " Pokemons");
+        pokemonFoundView.setText(pokemonText);
     }
     private void setTextOnScreen(int index){
         boolean isScanned = false;
