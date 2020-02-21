@@ -71,11 +71,6 @@ public class Game extends AppCompatActivity {
         buttons = new Button[ROWS][COLUMNS];
         board = new ScanBoard(ROWS,COLUMNS,MINES);
 
-        Log.d("option row is: ", ""+Options.getChosenRow(this));
-        Log.d("option col is: ", ""+Options.getChosenColumn(this));
-        Log.d("option mine is: ", ""+Options.getNumberOfMines(this));
-
-
         TableLayout table = (TableLayout)findViewById(R.id.tableForPokeballs);
 
         for(int r = 0; r < ROWS; r++){
