@@ -38,7 +38,7 @@ public class Game extends AppCompatActivity {
     private boolean[][] mine;
     private int[][] mineNum;
 
-    private static final int RESOLUTION = 100;
+    private static final int RESOLUTION = 200;
 
     private List<Integer> visibleColumns = new ArrayList<>();
     private List<Integer> visibleRows = new ArrayList<>();

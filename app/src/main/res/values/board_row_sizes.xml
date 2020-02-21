@@ -6,4 +6,6 @@
         <item>6</item>
     </integer-array>
 
+    <integer name="default_row">4</integer>
+
 </resources>

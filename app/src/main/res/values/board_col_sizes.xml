@@ -6,4 +6,6 @@
         <item>15</item>
     </integer-array>
 
+    <integer name="default_col">6</integer>
+
 </resources>

@@ -196,23 +196,26 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
     }
     static public int getChosenRow(Context context){
         SharedPreferences prefs = context.getSharedPreferences("AppPrefs", MODE_PRIVATE);
-        //TODO: Change default value.
-        return prefs.getInt("row", 0);
+
+        int defaultRow = context.getResources().getInteger(R.integer.default_row);
+
+        return prefs.getInt("row", defaultRow);
 
     }
 
     static public int getChosenColumn(Context context){
         SharedPreferences prefs = context.getSharedPreferences("AppPrefs", MODE_PRIVATE);
-        //TODO: Change default value.
-        return prefs.getInt("column", 0);
+        int defaultCol = context.getResources().getInteger(R.integer.default_col);
+        return prefs.getInt("column", defaultCol);
     }
 
     static public int getNumberOfMines(Context context){
 
         SharedPreferences prefs = context.getSharedPreferences("MinePrefs", MODE_PRIVATE);
 
-        //TODO: Change default value.
-        return prefs.getInt("mines", 0);
+        int defaultMines = context.getResources().getInteger(R.integer.default_number_of_mines);
+
+        return prefs.getInt("mines", defaultMines);
     }
 
 
