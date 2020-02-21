@@ -31,9 +31,10 @@ import java.util.List;
 
 public class Game extends AppCompatActivity {
 
-    private int ROWS = 4;
-    private int COLUMNS = 6;
-    private int MINES = 8;
+    private int ROWS;
+    private int COLUMNS;
+    private int MINES;
+    private int BEST_SCORE;
 
     private boolean[][] mine;
     private int[][] mineNum;
@@ -61,6 +62,10 @@ public class Game extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        int timesPlayed = Options.getTimesPlayed(this);
+        timesPlayed++;
+        Options.saveTimesPlayed(timesPlayed,this);
+
         populatePokeballs();
         mine = board.mineBoard();
         mineNum = board.numBoard(mine);

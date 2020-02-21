@@ -9,4 +9,7 @@
 
     <integer name="default_number_of_mines">6</integer>
 
+    <integer name="default_times_played">0</integer>
+    <integer name="default_best_score">0</integer>
+
 </resources>

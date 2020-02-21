@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -22,7 +23,6 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
     private int chosenRow;
     private int chosenColumn;
     private int chosenMineNumber;
-
 
     Spinner boardSizeSpinner;
     Spinner numberOfMinesSpinner;
@@ -41,16 +41,22 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
         setUpBoardSizeSpinner();
         setUpNumberOfMinesSpinner();
 
-        int savedRow = getChosenRow(this);
-        Log.d("saveRow", "" + savedRow);
-        int savedColumn = getChosenColumn(this);
-        Log.d("saveColumn", "" + savedColumn);
-        int savedNumberOfMines = getNumberOfMines(this);
-        Log.d("saveNumberOfMines", "" + savedNumberOfMines);
-
+        refreshTimesPlayed();
+        refreshBestScore();
 
     }
 
+    private void refreshBestScore() {
+        TextView bestScoreText = (TextView) findViewById(R.id.playerbestScoreTextView);
+        int bestScore = getBestScore(this);
+        bestScoreText.setText(Integer.toString(bestScore));
+    }
+
+    private void refreshTimesPlayed(){
+        TextView numberOfTimesPlayed = (TextView) findViewById(R.id.playerNumTimesPlayedTextView);
+        int timesPlayed = getTimesPlayed(this);
+        numberOfTimesPlayed.setText(Integer.toString(timesPlayed));
+    }
 
     private void setUpBoardSizeSpinner(){
 
@@ -175,7 +181,7 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
     }
 
     private void saveBoardSize(int row, int column) {
-        SharedPreferences prefs = this.getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences("BoardSizePrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("row", row);
         editor.putInt("column", column);
@@ -189,26 +195,50 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
         editor.apply();
     }
 
-    static public int getChosenRow(Context context){
-        SharedPreferences prefs = context.getSharedPreferences("AppPrefs", MODE_PRIVATE);
+    private void saveBestScore(int score){
+        SharedPreferences prefs = this.getSharedPreferences("BestScorePrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("bestScore", score);
+        editor.apply();
+    }
+
+
+    public static void saveTimesPlayed(int times, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("TimesPlayedPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("timesPlayed", times);
+        editor.apply();
+    }
+
+    public static int getChosenRow(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BoardSizePrefs", MODE_PRIVATE);
         int defaultRow = context.getResources().getInteger(R.integer.default_row);
         return prefs.getInt("row", defaultRow);
     }
 
-    static public int getChosenColumn(Context context){
-        SharedPreferences prefs = context.getSharedPreferences("AppPrefs", MODE_PRIVATE);
+    public static int getChosenColumn(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BoardSizePrefs", MODE_PRIVATE);
         int defaultCol = context.getResources().getInteger(R.integer.default_col);
         return prefs.getInt("column", defaultCol);
     }
 
-    static public int getNumberOfMines(Context context){
-
+    public static int getNumberOfMines(Context context){
         SharedPreferences prefs = context.getSharedPreferences("MinePrefs", MODE_PRIVATE);
         int defaultMines = context.getResources().getInteger(R.integer.default_number_of_mines);
         return prefs.getInt("mines", defaultMines);
     }
 
+    public static int getTimesPlayed(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("TimesPlayedPrefs", MODE_PRIVATE);
+        int defaultTimesPlaed =  context.getResources().getInteger(R.integer.default_times_played);
+        return prefs.getInt("timesPlayed", defaultTimesPlaed);
+    }
 
+    public static int getBestScore(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScorePrefs", MODE_PRIVATE);
+        int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_best_score);
+        return prefs.getInt("bestScore", defaultTimesPlayed);
+    }
 
 
     public static Intent makeIntentForOptions(Context context){
