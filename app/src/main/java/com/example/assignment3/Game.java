@@ -31,9 +31,9 @@ import java.util.List;
 
 public class Game extends AppCompatActivity {
 
-    private int ROWS = 4;
-    private int COLUMNS = 6;
-    private int MINES = 8;
+    private int ROWS ;
+    private int COLUMNS;
+    private int MINES;
 
     private boolean[][] mine;
     private int[][] mineNum;
