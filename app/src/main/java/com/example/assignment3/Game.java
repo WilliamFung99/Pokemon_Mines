@@ -38,9 +38,10 @@ import java.util.List;
 
 public class Game extends AppCompatActivity {
 
-    private int ROWS ;
+    private int ROWS;
     private int COLUMNS;
     private int MINES;
+
 
     private boolean[][] mine;
     private int[][] mineNum;
@@ -72,6 +73,10 @@ public class Game extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        int timesPlayed = Options.getTimesPlayed(this);
+        timesPlayed++;
+        Options.saveTimesPlayed(timesPlayed,this);
+
         populatePokeballs();
         mine = board.mineBoard();
         mineNum = board.numBoard(mine);
@@ -213,6 +218,18 @@ public class Game extends AppCompatActivity {
         }
         createTotalPokemonCollectedView();
         if(pokemonFound == MINES){
+
+            int bestScore = Options.getBestScore(this);
+
+            if(bestScore == 0){
+                Options.saveBestScore(scans, this);
+            }
+            else{
+                if(bestScore > scans){
+                    Options.saveBestScore(scans, this);
+                }
+
+            }
             endGameScreen();
         }
     }
