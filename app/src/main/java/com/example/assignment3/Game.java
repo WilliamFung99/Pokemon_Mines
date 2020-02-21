@@ -45,7 +45,6 @@ public class Game extends AppCompatActivity {
     Button buttons[][];
 
     private List<Integer> charzardIndex = new ArrayList<>();
-
     private List<Integer> scannedIndex = new ArrayList<>();
 
 
