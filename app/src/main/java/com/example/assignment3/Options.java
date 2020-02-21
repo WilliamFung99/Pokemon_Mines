@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,9 +41,40 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
 
         setUpBoardSizeSpinner();
         setUpNumberOfMinesSpinner();
-
         refreshTimesPlayed();
         refreshBestScore();
+        setUpResetTimesPlayedButton(this);
+        setUpResetBestScoreButton(this);
+    }
+
+    private void setUpResetBestScoreButton(final Context context) {
+        final Button resetBestScore = (Button) findViewById(R.id.btnResetBestScore);
+
+        resetBestScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int defaultScore = context.getResources().getInteger(R.integer.default_best_score);
+                saveBestScore(defaultScore,context);
+                refreshBestScore();
+
+            }
+        });
+
+
+    }
+
+    private void setUpResetTimesPlayedButton(final Context context) {
+        Button resetTimesPlayed = (Button)findViewById(R.id.btnResetTimesPlayed);
+
+        resetTimesPlayed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int defaultTimesPlayed = context.getResources().getInteger(R.integer.default_times_played);
+                saveTimesPlayed(defaultTimesPlayed, context);
+                refreshTimesPlayed();
+
+            }
+        });
 
     }
 
@@ -195,8 +227,8 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
         editor.apply();
     }
 
-    private void saveBestScore(int score){
-        SharedPreferences prefs = this.getSharedPreferences("BestScorePrefs", MODE_PRIVATE);
+    public static void saveBestScore(int score, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScorePrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("bestScore", score);
         editor.apply();
@@ -254,6 +286,12 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
     }
 }

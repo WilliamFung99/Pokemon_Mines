@@ -212,6 +212,18 @@ public class Game extends AppCompatActivity {
         }
         createTotalPokemonCollectedView();
         if(pokemonFound == MINES){
+
+            int bestScore = Options.getBestScore(this);
+
+            if(bestScore == 0){
+                Options.saveBestScore(scans, this);
+            }
+            else{
+                if(bestScore > scans){
+                    Options.saveBestScore(scans, this);
+                }
+
+            }
             endGameScreen();
         }
     }

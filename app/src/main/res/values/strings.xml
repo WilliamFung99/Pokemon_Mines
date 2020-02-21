@@ -13,7 +13,7 @@
     <string name="options">Options</string>
     <string name="best_score">Best Score: </string>
     <string name="best_score_of_player">0</string>
-    <string name="reset_highest_score">Reset highest score</string>
+    <string name="reset_best_score">Reset best score</string>
     <string name="number_of_times_played">Number of times played: </string>
     <string name="number_of_times_played_of_player">0</string>
     <string name="reset_number_of_times_played">Reset times played</string>
