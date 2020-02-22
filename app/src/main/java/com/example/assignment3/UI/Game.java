@@ -225,6 +225,10 @@ public class Game extends AppCompatActivity {
         dialog.setContentView(R.layout.congrats_popup);
         close = (ImageView) dialog.findViewById(R.id.close);
         ok = (Button) dialog.findViewById(R.id.btnOk);
+        TextView score = (TextView) dialog.findViewById(R.id.yourScoreTextView);
+        String scoreText = ("Your Score is: " + scans);
+
+        score.setText(scoreText);
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -248,7 +252,6 @@ public class Game extends AppCompatActivity {
         windowAlDl.setAttributes(layoutParams);
 
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
         dialog.show();
 
     }

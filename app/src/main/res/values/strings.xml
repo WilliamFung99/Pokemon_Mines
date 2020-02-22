@@ -55,6 +55,7 @@
         Both William and Kenneth are third year CMPT Major students attending Simon Fraser University
     </string>
     <string name="resources">Resources:</string>
+    <string name="your_score_is">Your Score is: 0</string>
 
     <string name="resource_links">
         <a href = "https://wallup.net/pokemon-16/">Background</a>
