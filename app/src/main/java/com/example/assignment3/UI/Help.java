@@ -18,26 +18,34 @@ import android.widget.TextView;
  */
 public class Help extends AppCompatActivity {
 
-    TextView homePageLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
-        homePageLink = (TextView)findViewById(R.id.hyperlinkTextView);
-        homePageLink.setMovementMethod(LinkMovementMethod.getInstance());
+        setUpHomePageLink();
 
+        setUpRecourceLinks();
         setUpBackButton();
 
-        howToPlayText();
-        aboutAuthorText();
+    }
 
+    private void setUpRecourceLinks() {
+        TextView links;
+        links = (TextView) findViewById(R.id.linksTextView);
+        links.setMovementMethod(LinkMovementMethod.getInstance());
+
+    }
+
+    private void setUpHomePageLink() {
+        TextView homePageLink;
+        homePageLink = (TextView)findViewById(R.id.hyperlinkTextView);
+        homePageLink.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     private void setUpBackButton() {
         Button backButton = (Button) findViewById(R.id.btnBack);
-
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,24 +59,5 @@ public class Help extends AppCompatActivity {
         return new Intent(context, Help.class);
     }
 
-    private void howToPlayText(){
-        TextView howToPlay = findViewById(R.id.instructionsTextView);
-        String text =
-                "Pokemon seeker is a game based on the original Mine seeker game. The player clicks" + '\n' +
-                "on a pokeball to find the hidden charzard, that is randomly located in any of the" + '\n' +
-                "pokeballs. If the pokeball contains a pokemon, it is revealed to the player, otherwise" + '\n' +
-                "it performs a scan on its respective row and column to indicate how many pokemon are" + '\n' +
-                "located in its respective column and row. the goal of the game is to find all the " + '\n' +
-                        "charzards in the least amount of scans.";
-
-        howToPlay.setText(text);
-    }
-    private void aboutAuthorText(){
-        TextView about = findViewById(R.id.authors);
-        String text =
-                "Both William and Kenneth are third year CMPT" + '\n' +
-                "Major students attending Simon Fraser University" + '\n';
-        about.setText(text);
-    }
 
 }

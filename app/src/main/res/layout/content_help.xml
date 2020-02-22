@@ -42,15 +42,14 @@
         android:id="@+id/hyperlinkTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:text="@string/CMPT276_Link"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.866"
+        app:layout_constraintHorizontal_bias="0.988"
         app:layout_constraintStart_toEndOf="@+id/authors"
-        app:layout_constraintTop_toBottomOf="@+id/helpTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/authors" />
 
     <Button
         android:id="@+id/btnBack"
@@ -76,12 +75,12 @@
         android:textColor="@color/colorBlack"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aboutTheAuthorTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/hyperlinkTextView" />
 
     <TextView
         android:id="@+id/instructionsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="620dp"
+        android:layout_height="90dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:text="@string/instructions"
@@ -91,13 +90,39 @@
 
     <TextView
         android:id="@+id/authors"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="533dp"
+        android:layout_height="35dp"
         android:layout_marginStart="17dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="82dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:text="@string/about_author"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/aboutTheAuthorTextView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/helpTextView" />
+
+    <TextView
+        android:id="@+id/resourceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:text="@string/resources"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instructionsTextView" />
+
+    <TextView
+        android:id="@+id/linksTextView"
+        android:layout_width="606dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:text="@string/resource_links"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resourceTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

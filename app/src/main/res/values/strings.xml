@@ -46,8 +46,28 @@
     <string name="save">Save</string>
     <string name="back">Back</string>
     <string name="how_to_play">How to Play:</string>
-    <string name="instructions">Write something here...</string>
-    <string name="about_author">about author...</string>
+    <string name="instructions">
+        Pokemon seeker is a game based on the original Mine seeker game. The player clicks on a pokeball to find the hidden charzard, that is randomly located in any of the
+        pokeballs. If the pokeball contains a pokemon, it is revealed to the player, otherwise it performs a scan on its respective row and column to indicate how many pokemon are
+        located in its respective column and row. the goal of the game is to find all the charzards in the least amount of scans.
+    </string>
+    <string name="about_author">
+        Both William and Kenneth are third year CMPT Major students attending Simon Fraser University
+    </string>
+    <string name="resources">Resources:</string>
 
+    <string name="resource_links">
+        <a href = "https://wallup.net/pokemon-16/">Background</a>
+        <a href="https://pngimage.net/pokeball-open-png-7/?fbclid=IwAR3-Mer4wz7B7Nz9oFT7YY_HJ_pZKSf7OAgb7d3eMCB-zuicQgq_bu4er40">Pokeball Image</a>
+        <a href = "https://www.pinterest.ca/pin/516014069778121841/">Pikachu Image</a>
+        <a href="https://hubpages.com/games-hobbies/Pokemon-Charizard-Nicknames">Charzard Image</a>
+        <a href = "https://pokemondb.net/pokedex/squirtle">Squirtle Image</a>
+        <a href = "https://www.pngitem.com/middle/iJJixJ_charmander-pokemon-png-image-transparent-background-transparent-background/">Charmander Image</a>
+        <a href = "https://www.quora.com/Which-is-the-strongest-Pokemon-Charmander-Bulbasaur-or-Squirtle">Bulbasaur Image</a>
+        <a href = "https://knowyourmeme.com/memes/furret-walk">Furret Image</a>
+        <a href = "https://www.schemecolor.com/pokemon-colors.php">Pokemon Colour Picker</a>
+        <a href = "https://www.youtube.com/watch?v=kAmkLHLTeE0">Pokeball Opening Sound</a>
+        <a href = "https://www.youtube.com/watch?v=OKdeFZwyLUQ">Charizard Sound Effect</a>
+    </string>
 
 </resources>

@@ -98,6 +98,6 @@
         app:layout_constraintStart_toEndOf="@+id/btnOptions"
         app:layout_constraintTop_toBottomOf="@+id/mainMenu"
         app:layout_constraintVertical_bias="0.266"
-        app:srcCompat="@drawable/pikachuimage" />
+        app:srcCompat="@drawable/pikachu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
