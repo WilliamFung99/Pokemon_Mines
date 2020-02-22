@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Assignment3</string>
+    <string name="app_name">Pokemon Seeker</string>
     <string name="play_game">Play Game!</string>
     <string name="action_settings">Settings</string>
     <string name="pokemon_seeker">Pokemon Seeker</string>
