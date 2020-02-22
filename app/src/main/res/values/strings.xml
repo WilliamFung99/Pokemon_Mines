@@ -49,7 +49,7 @@
     <string name="instructions">
         Pokemon seeker is a game based on the original Mine seeker game. The player clicks on a pokeball to find the hidden charzard, that is randomly located in any of the
         pokeballs. If the pokeball contains a pokemon, it is revealed to the player, otherwise it performs a scan on its respective row and column to indicate how many pokemon are
-        located in its respective column and row. the goal of the game is to find all the charzards in the least amount of scans.
+        located in its respective column and row. The goal of the game is to find all the charzards in the least amount of scans.
     </string>
     <string name="about_author">
         Both William and Kenneth are third year CMPT Major students attending Simon Fraser University
