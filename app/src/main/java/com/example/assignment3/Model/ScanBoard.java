@@ -16,6 +16,7 @@ public class ScanBoard {
     private boolean[][] mineboard;
 
     public List<Integer> occupiedMineList;
+    public List<Points> minesList;
 
     public ScanBoard(int ROWS, int COLS, int MINES){
         this.ROWS = ROWS;
@@ -24,6 +25,7 @@ public class ScanBoard {
         numbersOnBoard = new int[COLS][ROWS];
         board = new Board(ROWS,COLS,MINES);
         occupiedMineList = board.occupiedMinesList;
+        minesList = board.minesList;
     }
 
     public boolean[][] mineBoard(){

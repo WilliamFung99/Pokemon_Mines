@@ -20,6 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
@@ -136,7 +138,6 @@ public class Game extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void gridButtonClicked(int column, int row) {
-
         MediaPlayer charzardSound = MediaPlayer.create(this,R.raw.charzard_sound_effect);
 
         boolean isPokemonFound = false;
@@ -177,6 +178,7 @@ public class Game extends AppCompatActivity {
             Resources resource = getResources();
             button.setBackground(new BitmapDrawable(resource, scaleBitmap));
 
+
             for(int i = 0; i < charzardIndex.size(); i++){
                 if(index == charzardIndex.get(i)){
                     originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.charzard);
@@ -185,7 +187,7 @@ public class Game extends AppCompatActivity {
                     button.setBackground(new BitmapDrawable(resource, scaleBitmap));
                 }
             }
-            setScanTextOnScreen(index);
+            setScanTextOnScreen(index, column, row);
             String msgMineNum = Integer.toString(mineNum[column][row]);
             button.setText(msgMineNum);
         }
@@ -261,7 +263,7 @@ public class Game extends AppCompatActivity {
         String pokemonText = ("Found " + pokemonFound + " of " + MINES + " Pokemons");
         pokemonFoundView.setText(pokemonText);
     }
-    private void setScanTextOnScreen(int index){
+    private void setScanTextOnScreen(int index, int column, int row){
         boolean isScanned = false;
         for(int indices = 0 ; indices < scannedIndex.size(); indices++) {
             if(index == scannedIndex.get(indices)){
@@ -269,6 +271,7 @@ public class Game extends AppCompatActivity {
             }
         }
         if(!isScanned){
+            scanningAnimation(row,column);
 
             scannedIndex.add(index);
             scans++;
@@ -341,5 +344,25 @@ public class Game extends AppCompatActivity {
         }
     }
 
+    private void scanningAnimation(int row,int col) {
+        for (int left = 0; left < col; left++) {
+            fadeAnimtion(row,left);
+        }
+        for (int right = col + 1; right < COLUMNS; right++) {
+            fadeAnimtion(row,right);
+        }
+        for (int down = row + 1; down < ROWS; down++) {
+            fadeAnimtion(down,col);
+        }
+        for (int up = row - 1; up >= 0; up--) {
+            fadeAnimtion(up,col);
+        }
 
+    }
+
+    private void fadeAnimtion(int row, int col){
+        Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.furret_animation_disappear);
+        buttons[row][col].setAnimation(fadeOut);
+
+    }
 }
