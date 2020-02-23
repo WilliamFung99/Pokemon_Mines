@@ -79,6 +79,10 @@ public class Game extends AppCompatActivity {
         mine = board.mineBoard();
         mineNum = board.numBoard(mine);
 
+        String timesPlayedString = Integer.toString(timesPlayed);
+        TextView totalTimesPlayed = findViewById(R.id.numberTimesPlayed);
+        totalTimesPlayed.setText(timesPlayedString);
+
     }
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void populatePokeballs() {
