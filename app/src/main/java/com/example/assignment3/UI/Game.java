@@ -83,7 +83,178 @@ public class Game extends AppCompatActivity {
         TextView totalTimesPlayed = findViewById(R.id.numberTimesPlayed);
         totalTimesPlayed.setText(timesPlayedString);
 
+        setUpHighestScoreForConfiguration();
+
     }
+
+    private void setUpHighestScoreForConfiguration() {
+
+        ROWS = Options.getChosenRow(this);
+
+        if(ROWS == 4) {
+            setUpHighestScoreForFourRows();
+        }
+        else if(ROWS == 5){
+            setUpHighestScoreForFiveRows();
+
+        }
+        else{
+            setUpHighestScoreForSixRows();
+
+        }
+
+
+    }
+
+    private void setUpHighestScoreForSixRows() {
+        MINES = Options.getNumberOfMines(this);
+
+        if(MINES == 6){
+            int bestScore = Options.getBestScoreForSixByFifteenAndSixConf(this);
+            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+
+            if(bestScore == 0){
+                besdtScoreTextView.setText("N/A");
+            }
+            else{
+                besdtScoreTextView.setText(Integer.toString(bestScore));
+            }
+        }
+        if(MINES == 10){
+            int bestScore = Options.getBestScoreForSixByFifteenAndTenConf(this);
+            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+
+            if(bestScore == 0){
+                besdtScoreTextView.setText("N/A");
+            }
+            else{
+                besdtScoreTextView.setText(Integer.toString(bestScore));
+            }
+        }
+        if(MINES == 15){
+            int bestScore = Options.getBestScoreForSixByFifteenAndFifteenConf(this);
+            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+
+            if(bestScore == 0){
+                besdtScoreTextView.setText("N/A");
+            }
+            else{
+                besdtScoreTextView.setText(Integer.toString(bestScore));
+            }
+        }
+        if(MINES == 20){
+            int bestScore = Options.getBestScoreForSixByFifteenAndTwentyConf(this);
+            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+
+            if(bestScore == 0){
+                besdtScoreTextView.setText("N/A");
+            }
+            else{
+                besdtScoreTextView.setText(Integer.toString(bestScore));
+            }
+        }
+    }
+
+    private void setUpHighestScoreForFiveRows() {
+        MINES = Options.getNumberOfMines(this);
+
+        if(MINES == 6){
+            int bestScore = Options.getBestScoreForFiveByTenAndSixConf(this);
+            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+
+            if(bestScore == 0){
+                besdtScoreTextView.setText("N/A");
+            }
+            else{
+                besdtScoreTextView.setText(Integer.toString(bestScore));
+            }
+        }
+        if(MINES == 10){
+            int bestScore = Options.getBestScoreForFiveByTenAndTenConf(this);
+            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+
+            if(bestScore == 0){
+                besdtScoreTextView.setText("N/A");
+            }
+            else{
+                besdtScoreTextView.setText(Integer.toString(bestScore));
+            }
+        }
+        if(MINES == 15){
+            int bestScore = Options.getBestScoreForFiveByTenAndFifteenConf(this);
+            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+
+            if(bestScore == 0){
+                besdtScoreTextView.setText("N/A");
+            }
+            else{
+                besdtScoreTextView.setText(Integer.toString(bestScore));
+            }
+        }
+        if(MINES == 20){
+            int bestScore = Options.getBestScoreForFiveByTenAndTwentyConf(this);
+            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+
+            if(bestScore == 0){
+                besdtScoreTextView.setText("N/A");
+            }
+            else{
+                besdtScoreTextView.setText(Integer.toString(bestScore));
+            }
+        }
+    }
+
+    private void setUpHighestScoreForFourRows() {
+
+        MINES = Options.getNumberOfMines(this);
+
+        if(MINES == 6){
+            int bestScore = Options.getBestScoreForFourBySixAndSixConf(this);
+            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+
+            if(bestScore == 0){
+                besdtScoreTextView.setText("N/A");
+            }
+            else{
+                besdtScoreTextView.setText(Integer.toString(bestScore));
+            }
+        }
+        if(MINES == 10){
+            int bestScore = Options.getBestScoreForFourBySixAndTenConf(this);
+            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+
+            if(bestScore == 0){
+                besdtScoreTextView.setText("N/A");
+            }
+            else{
+                besdtScoreTextView.setText(Integer.toString(bestScore));
+            }
+        }
+        if(MINES == 15){
+            int bestScore = Options.getBestScoreForFourBySixAndFifteenConf(this);
+            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+
+            if(bestScore == 0){
+                besdtScoreTextView.setText("N/A");
+            }
+            else{
+                besdtScoreTextView.setText(Integer.toString(bestScore));
+            }
+        }
+        if(MINES == 20){
+            int bestScore = Options.getBestScoreForFourBySixAndTwentyConf(this);
+            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+
+            if(bestScore == 0){
+                besdtScoreTextView.setText("N/A");
+            }
+            else{
+                besdtScoreTextView.setText(Integer.toString(bestScore));
+            }
+        }
+
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void populatePokeballs() {
         ROWS = Options.getChosenRow(this);

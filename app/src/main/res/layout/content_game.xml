@@ -48,8 +48,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:text="@string/number_of_scan_used_text"
         android:textColor="@color/colorBlack"
         app:layout_constraintEnd_toStartOf="@+id/numberOfScansUsedTextView"
@@ -71,10 +71,12 @@
         android:id="@+id/totalTimesPlayed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginBottom="13dp"
         android:text="@string/number_of_times_played"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/numberTimesPlayed"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableForPokeballs"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -82,12 +84,36 @@
         android:id="@+id/numberTimesPlayed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
-        android:layout_marginRight="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginBottom="13dp"
         android:text="@string/_0"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/totalTimesPlayed"
+        app:layout_constraintTop_toBottomOf="@+id/tableForPokeballs" />
+
+    <TextView
+        android:id="@+id/configuratationBestScoreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="13dp"
+        android:text="@string/best_score_of_configuration"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableForPokeballs" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="13dp"
+        android:text="@string/highest_score"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/configuratationBestScoreTextView"
         app:layout_constraintTop_toBottomOf="@+id/tableForPokeballs" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
