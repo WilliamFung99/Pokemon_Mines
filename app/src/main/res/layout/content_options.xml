@@ -118,18 +118,6 @@
         app:layout_constraintStart_toEndOf="@+id/numberOfTImesPlayedTextView"
         app:layout_constraintTop_toBottomOf="@+id/numberOfMinesTextView" />
 
-    <TextView
-        android:id="@+id/playerbestScoreTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/best_score_of_player"
-        android:textColor="@color/colorBlack"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerNumTimesPlayedTextView" />
-
     <Button
         android:id="@+id/btnResetBestScore"
         android:layout_width="180dp"

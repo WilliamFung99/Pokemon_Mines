@@ -211,17 +211,6 @@ public class Game extends AppCompatActivity {
         if(pokemonFound == MINES){
 
             saveBestScores();
-
-//            int bestScore = Options.getBestScore(this);
-//
-//            if(bestScore == 0){
-//                Options.saveBestScore(scans, this);
-//            }
-//            else{
-//                if(bestScore > scans){
-//                    Options.saveBestScore(scans, this);
-//                }
-//            }
             endGameScreen();
         }
     }

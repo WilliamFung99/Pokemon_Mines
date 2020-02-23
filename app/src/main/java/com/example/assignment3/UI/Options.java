@@ -59,9 +59,24 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
             @Override
             public void onClick(View v) {
                 int defaultScore = context.getResources().getInteger(R.integer.default_best_score);
-                saveBestScore(defaultScore,context);
-                refreshBestScore();
 
+                saveBestScoreForFourBySixAndSixConf(defaultScore,context);
+                saveBestScoreForFourBySixAndTenConf(defaultScore,context);
+                saveBestScoreForFourBySixAndFifteenConf(defaultScore,context);
+                saveBestScoreForFourBySixAndTwentyConf(defaultScore,context);
+
+
+                saveBestScoreForFiveByTenAndSixConf(defaultScore,context);
+                saveBestScoreForFiveByTenAndTenConf(defaultScore,context);
+                saveBestScoreForFiveByTenAndFifteenConf(defaultScore,context);
+                saveBestScoreForFiveByTenAndTwentyConf(defaultScore,context);
+
+                saveBestScoreForSixByFifteenAndSixConf(defaultScore,context);
+                saveBestScoreForSixByFifteenAndTenConf(defaultScore,context);
+                saveBestScoreForSixByFifteenAndFifteenConf(defaultScore,context);
+                saveBestScoreForSixByFifteenAndTwentyConf(defaultScore,context);
+
+                refreshBestScore();
             }
         });
 
@@ -83,7 +98,6 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
     }
 
     private void refreshBestScore() {
-        TextView bestScoreText = (TextView) findViewById(R.id.playerbestScoreTextView);
 
         refreshBestScoreForFourRows();
 
@@ -91,8 +105,6 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
 
         refreshBestScoreForSixRows();
 
-        int bestScore = getBestScore(this);
-        bestScoreText.setText(Integer.toString(bestScore));
     }
 
     private void refreshBestScoreForSixRows() {
