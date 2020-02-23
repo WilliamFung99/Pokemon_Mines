@@ -420,8 +420,8 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
 
     public static int getTimesPlayed(Context context){
         SharedPreferences prefs = context.getSharedPreferences("TimesPlayedPrefs", MODE_PRIVATE);
-        int defaultTimesPlaed =  context.getResources().getInteger(R.integer.default_times_played);
-        return prefs.getInt("timesPlayed", defaultTimesPlaed);
+        int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_times_played);
+        return prefs.getInt("timesPlayed", defaultTimesPlayed);
     }
 
     public static int getBestScore(Context context){
