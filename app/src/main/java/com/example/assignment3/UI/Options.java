@@ -155,7 +155,7 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
         final int[] numberOfMines = getResources().getIntArray(R.array.numbers_of_mines);
         for(int i = 0; i < numberOfMines.length; i++){
             int mines = numberOfMines[i];
-            minesSizes.add(""+ mines + " " + "mines");
+            minesSizes.add(""+ mines + " " + "Pokemons");
         }
         numberOfMinesSpinner = (Spinner)findViewById(R.id.selectMinesSpinner);
         numberOfMinesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, minesSizes);

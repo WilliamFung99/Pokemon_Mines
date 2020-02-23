@@ -53,7 +53,7 @@
 
     <Spinner
         android:id="@+id/selectMinesSpinner"
-        android:layout_width="150dp"
+        android:layout_width="180dp"
         android:layout_height="42dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
@@ -66,12 +66,12 @@
 
     <TextView
         android:id="@+id/numberOfMinesTextView"
-        android:layout_width="175dp"
+        android:layout_width="250dp"
         android:layout_height="42dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="16dp"
-        android:text="@string/number_of_mines"
+        android:text="@string/number_of_pokemons"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/number_of_times_played"
         android:textColor="@color/colorBlack"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberOfMinesTextView" />
 
@@ -101,7 +101,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/best_score"
         android:textColor="@color/colorBlack"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberOfTImesPlayedTextView" />
 
@@ -114,7 +114,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/number_of_times_played_of_player"
         android:textColor="@color/colorBlack"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/numberOfTImesPlayedTextView"
         app:layout_constraintTop_toBottomOf="@+id/numberOfMinesTextView" />
 
@@ -127,7 +127,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/best_score_of_player"
         android:textColor="@color/colorBlack"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/bestScoreTextView"
         app:layout_constraintTop_toBottomOf="@+id/playerNumTimesPlayedTextView" />
 
