@@ -206,18 +206,123 @@ public class Game extends AppCompatActivity {
         createTotalPokemonCollectedView();
         if(pokemonFound == MINES){
 
-            int bestScore = Options.getBestScore(this);
+            saveBestScores();
 
-            if(bestScore == 0){
-                Options.saveBestScore(scans, this);
-            }
-            else{
-                if(bestScore > scans){
-                    Options.saveBestScore(scans, this);
-                }
-
-            }
+//            int bestScore = Options.getBestScore(this);
+//
+//            if(bestScore == 0){
+//                Options.saveBestScore(scans, this);
+//            }
+//            else{
+//                if(bestScore > scans){
+//                    Options.saveBestScore(scans, this);
+//                }
+//            }
             endGameScreen();
+        }
+    }
+
+    private void saveBestScores() {
+
+        ROWS = Options.getChosenRow(this);
+
+        if(ROWS == 4) {
+            saveBestScoresForFourRows();
+        }
+        else if(ROWS == 5){
+            saveBestScoresForFiveRows();
+        }
+        else{
+            saveBestScoresForSixRows();
+        }
+
+    }
+
+    private void saveBestScoresForSixRows() {
+        MINES = Options.getNumberOfMines(this);
+
+        if(MINES == 6){
+            int bestScore = Options.getBestScoreForSixByFifteenAndSixConf(this);
+            if(bestScore == 0 || bestScore > scans ){
+                Options.saveBestScoreForSixByFifteenAndSixConf(scans,this);
+            }
+        }
+        if(MINES == 10){
+            int bestScore = Options.getBestScoreForSixByFifteenAndTenConf(this);
+            if(bestScore == 0 || bestScore > scans ){
+                Options.saveBestScoreForSixByFifteenAndTenConf(scans,this);
+            }
+        }
+        if(MINES == 15){
+            int bestScore = Options.getBestScoreForSixByFifteenAndFifteenConf(this);
+            if(bestScore == 0 || bestScore > scans ){
+                Options.saveBestScoreForSixByFifteenAndFifteenConf(scans,this);
+            }
+        }
+        if(MINES == 20){
+            int bestScore = Options.getBestScoreForSixByFifteenAndTwentyConf(this);
+            if(bestScore == 0 || bestScore > scans ){
+                Options.saveBestScoreForSixByFifteenAndTwentyConf(scans,this);
+            }
+        }
+    }
+
+    private void saveBestScoresForFiveRows() {
+        MINES = Options.getNumberOfMines(this);
+
+        if(MINES == 6){
+            int bestScore = Options.getBestScoreForFiveByTenAndSixConf(this);
+            if(bestScore == 0 || bestScore > scans ){
+                Options.saveBestScoreForFiveByTenAndSixConf(scans,this);
+            }
+        }
+        if(MINES == 10){
+            int bestScore = Options.getBestScoreForFiveByTenAndTenConf(this);
+            if(bestScore == 0 || bestScore > scans ){
+                Options.saveBestScoreForFiveByTenAndTenConf(scans,this);
+            }
+        }
+        if(MINES == 15){
+            int bestScore = Options.getBestScoreForFiveByTenAndFifteenConf(this);
+            if(bestScore == 0 || bestScore > scans ){
+                Options.saveBestScoreForFiveByTenAndFifteenConf(scans,this);
+            }
+        }
+        if(MINES == 20){
+            int bestScore = Options.getBestScoreForFiveByTenAndTwentyConf(this);
+            if(bestScore == 0 || bestScore > scans ){
+                Options.saveBestScoreForFiveByTenAndTwentyConf(scans,this);
+            }
+        }
+    }
+
+    private void saveBestScoresForFourRows() {
+
+        MINES = Options.getNumberOfMines(this);
+
+        if(MINES == 6){
+            int bestScore = Options.getBestScoreForFourBySixAndSixConf(this);
+            if(bestScore == 0 || bestScore > scans ){
+                Options.saveBestScoreForFourBySixAndSixConf(scans,this);
+            }
+        }
+        if(MINES == 10){
+            int bestScore = Options.getBestScoreForFourBySixAndTenConf(this);
+            if(bestScore == 0 || bestScore > scans ){
+                Options.saveBestScoreForFourBySixAndTenConf(scans,this);
+            }
+        }
+        if(MINES == 15){
+            int bestScore = Options.getBestScoreForFourBySixAndFifteenConf(this);
+            if(bestScore == 0 || bestScore > scans ){
+                Options.saveBestScoreForFourBySixAndFifteenConf(scans,this);
+            }
+        }
+        if(MINES == 20){
+            int bestScore = Options.getBestScoreForFourBySixAndTwentyConf(this);
+            if(bestScore == 0 || bestScore > scans ){
+                Options.saveBestScoreForFourBySixAndTwentyConf(scans,this);
+            }
         }
     }
 

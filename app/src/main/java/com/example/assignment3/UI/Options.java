@@ -84,8 +84,72 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
 
     private void refreshBestScore() {
         TextView bestScoreText = (TextView) findViewById(R.id.playerbestScoreTextView);
+
+        refreshBestScoreForFourRows();
+
+        refreshBestScoreForFiveRows();
+
+        refreshBestScoreForSixRows();
+
         int bestScore = getBestScore(this);
         bestScoreText.setText(Integer.toString(bestScore));
+    }
+
+    private void refreshBestScoreForSixRows() {
+        TextView sixByFifteenAndSixConfiguration = (TextView) findViewById(R.id.bestScoreFor6156TextView);
+        TextView sixByFifteenAndTenConfiguration = (TextView) findViewById(R.id.bestScoreFor61510TextView);
+        TextView sixByFifteenAndFifteenConfiguration = (TextView) findViewById(R.id.bestScoreFor61515TextView);
+        TextView sixByFifteenAndTwentyConfiguration = (TextView) findViewById(R.id.bestScoreFor61520TextView);
+
+        int bestScoreForSixMines = Options.getBestScoreForSixByFifteenAndSixConf(this);
+        int bestScoreForTenMines = Options.getBestScoreForSixByFifteenAndTenConf(this);
+        int bestScoreForFifteenMines = Options.getBestScoreForSixByFifteenAndFifteenConf(this);
+        int bestScoreForTwentyMines = Options.getBestScoreForSixByFifteenAndTwentyConf(this);
+
+
+        sixByFifteenAndSixConfiguration.setText("6 by 15 and 6 Pokemons: " + bestScoreForSixMines);
+        sixByFifteenAndTenConfiguration.setText("6 by 15 and 10 Pokemons: " + bestScoreForTenMines);
+        sixByFifteenAndFifteenConfiguration.setText("6 by 15 and 15 Pokemons: " + bestScoreForFifteenMines);
+        sixByFifteenAndTwentyConfiguration.setText("6 by 15 and 20 Pokemons: " + bestScoreForTwentyMines);
+
+
+    }
+
+    private void refreshBestScoreForFiveRows() {
+        TextView fiveByTenAndSixConfiguration = (TextView) findViewById(R.id.bestScoreFor5106TextView);
+        TextView fiveByTenAndTenConfiguration = (TextView) findViewById(R.id.bestScoreFor51010TextView);
+        TextView fiveByTenAndFifteenConfiguration = (TextView) findViewById(R.id.bestScoreFor51015TextView);
+        TextView fiveByTenAndTwentyConfiguration = (TextView) findViewById(R.id.bestScoreFor51020TextView);
+
+        int bestScoreForSixMines = Options.getBestScoreForFiveByTenAndSixConf(this);
+        int bestScoreForTenMines = Options.getBestScoreForFiveByTenAndTenConf(this);
+        int bestScoreForFifteenMines = Options.getBestScoreForFiveByTenAndFifteenConf(this);
+        int bestScoreForTwentyMines = Options.getBestScoreForFiveByTenAndTwentyConf(this);
+
+
+        fiveByTenAndSixConfiguration.setText("5 by 10 and 6 Pokemons: " + bestScoreForSixMines);
+        fiveByTenAndTenConfiguration.setText("5 by 10 and 10 Pokemons: " + bestScoreForTenMines);
+        fiveByTenAndFifteenConfiguration.setText("5 by 10 and 15 Pokemons: " + bestScoreForFifteenMines);
+        fiveByTenAndTwentyConfiguration.setText("5 by 10 and 20 Pokemons: " + bestScoreForTwentyMines);
+
+    }
+
+    private void refreshBestScoreForFourRows() {
+        TextView fourBySixAndSixConfiguration = (TextView) findViewById(R.id.bestScoreFor466TextView);
+        TextView fourBySixAndTenConfiguration = (TextView) findViewById(R.id.bestScoreFor4610TextView);
+        TextView fourBySixAndFifteenConfiguration = (TextView) findViewById(R.id.bestScoreFor4615TextView);
+        TextView fourBySixAndTwentyConfiguration = (TextView) findViewById(R.id.bestScoreFor4620TextView);
+
+        int bestScoreForSixMines = Options.getBestScoreForFourBySixAndSixConf(this);
+        int bestScoreForTenMines = Options.getBestScoreForFourBySixAndTenConf(this);
+        int bestScoreForFifteenMines = Options.getBestScoreForFourBySixAndFifteenConf(this);
+        int bestScoreForTwentyMines = Options.getBestScoreForFourBySixAndTwentyConf(this);
+
+        fourBySixAndSixConfiguration.setText("4 by 6 and 6 Pokemons: " + bestScoreForSixMines);
+        fourBySixAndTenConfiguration.setText("4 by 6 and 10 Pokemons: " + bestScoreForTenMines);
+        fourBySixAndFifteenConfiguration.setText("4 by 6 and 15 Pokemons: " + bestScoreForFifteenMines);
+        fourBySixAndTwentyConfiguration.setText("4 by 6 and 20 Pokemons: " + bestScoreForTwentyMines);
+
     }
 
     private void refreshTimesPlayed(){
@@ -228,6 +292,13 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
         editor.apply();
     }
 
+    public static void saveTimesPlayed(int times, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("TimesPlayedPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("timesPlayed", times);
+        editor.apply();
+    }
+
     public static void saveBestScore(int score, Context context){
         SharedPreferences prefs = context.getSharedPreferences("BestScorePrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -236,12 +307,98 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
     }
 
 
-    public static void saveTimesPlayed(int times, Context context){
-        SharedPreferences prefs = context.getSharedPreferences("TimesPlayedPrefs", MODE_PRIVATE);
+
+
+    public static void saveBestScoreForFourBySixAndSixConf(int score, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_4_by_6_and_6_Prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("timesPlayed", times);
+        editor.putInt("bestScore_for_4_by_6_and_6", score);
         editor.apply();
     }
+    public static void saveBestScoreForFourBySixAndTenConf(int score, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_4_by_6_and_10_Prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("bestScore_for_4_by_6_and_10", score);
+        editor.apply();
+    }
+    public static void saveBestScoreForFourBySixAndFifteenConf(int score, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_4_by_6_and_15_Prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("bestScore_for_4_by_6_and_15", score);
+        editor.apply();
+    }
+    public static void saveBestScoreForFourBySixAndTwentyConf(int score, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_4_by_6_and_20_Prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("bestScore_for_4_by_6_and_20", score);
+        editor.apply();
+    }
+
+
+
+
+
+    public static void saveBestScoreForFiveByTenAndSixConf(int score, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_5_by_10_and_6_Prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("bestScore_for_5_by_10_and_6", score);
+        editor.apply();
+    }
+    public static void saveBestScoreForFiveByTenAndTenConf(int score, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_5_by_10_and_10_Prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("bestScore_for_5_by_10_and_10", score);
+        editor.apply();
+    }
+    public static void saveBestScoreForFiveByTenAndFifteenConf(int score, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_5_by_10_and_15_Prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("bestScore_for_5_by_10_and_15", score);
+        editor.apply();
+    }
+    public static void saveBestScoreForFiveByTenAndTwentyConf(int score, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_5_by_10_and_20_Prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("bestScore_for_5_by_10_and_20", score);
+        editor.apply();
+    }
+
+
+
+
+
+    public static void saveBestScoreForSixByFifteenAndSixConf(int score, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_6_by_15_and_6_Prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("bestScore_for_6_by_15_and_6", score);
+        editor.apply();
+    }
+
+    public static void saveBestScoreForSixByFifteenAndTenConf(int score, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_6_by_15_and_10_Prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("bestScore_for_6_by_15_and_10", score);
+        editor.apply();
+    }
+
+    public static void saveBestScoreForSixByFifteenAndFifteenConf(int score, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_6_by_15_and_15_Prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("bestScore_for_6_by_15_and_15", score);
+        editor.apply();
+    }
+
+
+    public static void saveBestScoreForSixByFifteenAndTwentyConf(int score, Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_6_by_15_and_20_Prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("bestScore_for_6_by_15_and_20", score);
+        editor.apply();
+    }
+
+
+
+
 
     public static int getChosenRow(Context context){
         SharedPreferences prefs = context.getSharedPreferences("BoardSizePrefs", MODE_PRIVATE);
@@ -272,6 +429,86 @@ public class Options extends AppCompatActivity implements AdapterView.OnItemSele
         int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_best_score);
         return prefs.getInt("bestScore", defaultTimesPlayed);
     }
+
+
+
+
+    public static int getBestScoreForFourBySixAndSixConf(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_4_by_6_and_6_Prefs", MODE_PRIVATE);
+        int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_best_score);
+        return prefs.getInt("bestScore_for_4_by_6_and_6", defaultTimesPlayed);
+    }
+    public static int getBestScoreForFourBySixAndTenConf(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_4_by_6_and_10_Prefs", MODE_PRIVATE);
+        int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_best_score);
+        return prefs.getInt("bestScore_for_4_by_6_and_10", defaultTimesPlayed);
+    }
+    public static int getBestScoreForFourBySixAndFifteenConf(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_4_by_6_and_15_Prefs", MODE_PRIVATE);
+        int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_best_score);
+        return prefs.getInt("bestScore_for_4_by_6_and_15", defaultTimesPlayed);
+    }
+    public static int getBestScoreForFourBySixAndTwentyConf(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_4_by_6_and_20_Prefs", MODE_PRIVATE);
+        int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_best_score);
+        return prefs.getInt("bestScore_for_4_by_6_and_20", defaultTimesPlayed);
+    }
+
+
+
+
+
+
+    public static int getBestScoreForFiveByTenAndSixConf(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_5_by_10_and_6_Prefs", MODE_PRIVATE);
+        int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_best_score);
+        return prefs.getInt("bestScore_for_5_by_10_and_6", defaultTimesPlayed);
+    }
+    public static int getBestScoreForFiveByTenAndTenConf(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_5_by_10_and_10_Prefs", MODE_PRIVATE);
+        int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_best_score);
+        return prefs.getInt("bestScore_for_5_by_10_and_10", defaultTimesPlayed);
+    }
+    public static int getBestScoreForFiveByTenAndFifteenConf(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_5_by_10_and_15_Prefs", MODE_PRIVATE);
+        int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_best_score);
+        return prefs.getInt("bestScore_for_5_by_10_and_15", defaultTimesPlayed);
+    }
+    public static int getBestScoreForFiveByTenAndTwentyConf(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_5_by_10_and_20_Prefs", MODE_PRIVATE);
+        int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_best_score);
+        return prefs.getInt("bestScore_for_5_by_10_and_20", defaultTimesPlayed);
+    }
+
+
+
+
+
+
+    public static int getBestScoreForSixByFifteenAndSixConf(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_6_by_15_and_6_Prefs", MODE_PRIVATE);
+        int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_best_score);
+        return prefs.getInt("bestScore_for_6_by_15_and_6", defaultTimesPlayed);
+    }
+    public static int getBestScoreForSixByFifteenAndTenConf(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_6_by_15_and_10_Prefs", MODE_PRIVATE);
+        int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_best_score);
+        return prefs.getInt("bestScore_for_6_by_15_and_10", defaultTimesPlayed);
+    }
+    public static int getBestScoreForSixByFifteenAndFifteenConf(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_6_by_15_and_15_Prefs", MODE_PRIVATE);
+        int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_best_score);
+        return prefs.getInt("bestScore_for_6_by_15_and_15", defaultTimesPlayed);
+    }
+    public static int getBestScoreForSixByFifteenAndTwentyConf(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("BestScore_for_6_by_15_and_20_Prefs", MODE_PRIVATE);
+        int defaultTimesPlayed =  context.getResources().getInteger(R.integer.default_best_score);
+        return prefs.getInt("bestScore_for_6_by_15_and_20", defaultTimesPlayed);
+    }
+
+
+
+
 
 
     public static Intent makeIntentForOptions(Context context){
