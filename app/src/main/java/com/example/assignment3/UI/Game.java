@@ -615,21 +615,21 @@ public class Game extends AppCompatActivity {
 
     private void scanningAnimation(int row,int col) {
         for (int left = 0; left < col; left++) {
-            fadeAnimtion(row,left);
+            fadeAnimation(row,left);
         }
         for (int right = col + 1; right < COLUMNS; right++) {
-            fadeAnimtion(row,right);
+            fadeAnimation(row,right);
         }
         for (int down = row + 1; down < ROWS; down++) {
-            fadeAnimtion(down,col);
+            fadeAnimation(down,col);
         }
         for (int up = row - 1; up >= 0; up--) {
-            fadeAnimtion(up,col);
+            fadeAnimation(up,col);
         }
 
     }
 
-    private void fadeAnimtion(int row, int col){
+    private void fadeAnimation(int row, int col){
         Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.furret_animation_disappear);
         buttons[row][col].setAnimation(fadeOut);
 
