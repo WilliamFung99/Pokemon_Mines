@@ -111,46 +111,46 @@ public class Game extends AppCompatActivity {
 
         if(MINES == 6){
             int bestScore = Options.getBestScoreForSixByFifteenAndSixConf(this);
-            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+            TextView bestScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
 
             if(bestScore == 0){
-                besdtScoreTextView.setText("N/A");
+                bestScoreTextView.setText("N/A");
             }
             else{
-                besdtScoreTextView.setText(Integer.toString(bestScore));
+                bestScoreTextView.setText(Integer.toString(bestScore));
             }
         }
         if(MINES == 10){
             int bestScore = Options.getBestScoreForSixByFifteenAndTenConf(this);
-            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+            TextView bestScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
 
             if(bestScore == 0){
-                besdtScoreTextView.setText("N/A");
+                bestScoreTextView.setText("N/A");
             }
             else{
-                besdtScoreTextView.setText(Integer.toString(bestScore));
+                bestScoreTextView.setText(Integer.toString(bestScore));
             }
         }
         if(MINES == 15){
             int bestScore = Options.getBestScoreForSixByFifteenAndFifteenConf(this);
-            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+            TextView bestScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
 
             if(bestScore == 0){
-                besdtScoreTextView.setText("N/A");
+                bestScoreTextView.setText("N/A");
             }
             else{
-                besdtScoreTextView.setText(Integer.toString(bestScore));
+                bestScoreTextView.setText(Integer.toString(bestScore));
             }
         }
         if(MINES == 20){
             int bestScore = Options.getBestScoreForSixByFifteenAndTwentyConf(this);
-            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+            TextView bestScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
 
             if(bestScore == 0){
-                besdtScoreTextView.setText("N/A");
+                bestScoreTextView.setText("N/A");
             }
             else{
-                besdtScoreTextView.setText(Integer.toString(bestScore));
+                bestScoreTextView.setText(Integer.toString(bestScore));
             }
         }
     }
@@ -160,46 +160,46 @@ public class Game extends AppCompatActivity {
 
         if(MINES == 6){
             int bestScore = Options.getBestScoreForFiveByTenAndSixConf(this);
-            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+            TextView bestScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
 
             if(bestScore == 0){
-                besdtScoreTextView.setText("N/A");
+                bestScoreTextView.setText("N/A");
             }
             else{
-                besdtScoreTextView.setText(Integer.toString(bestScore));
+                bestScoreTextView.setText(Integer.toString(bestScore));
             }
         }
         if(MINES == 10){
             int bestScore = Options.getBestScoreForFiveByTenAndTenConf(this);
-            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+            TextView bestScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
 
             if(bestScore == 0){
-                besdtScoreTextView.setText("N/A");
+                bestScoreTextView.setText("N/A");
             }
             else{
-                besdtScoreTextView.setText(Integer.toString(bestScore));
+                bestScoreTextView.setText(Integer.toString(bestScore));
             }
         }
         if(MINES == 15){
             int bestScore = Options.getBestScoreForFiveByTenAndFifteenConf(this);
-            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+            TextView bestScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
 
             if(bestScore == 0){
-                besdtScoreTextView.setText("N/A");
+                bestScoreTextView.setText("N/A");
             }
             else{
-                besdtScoreTextView.setText(Integer.toString(bestScore));
+                bestScoreTextView.setText(Integer.toString(bestScore));
             }
         }
         if(MINES == 20){
             int bestScore = Options.getBestScoreForFiveByTenAndTwentyConf(this);
-            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+            TextView bestScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
 
             if(bestScore == 0){
-                besdtScoreTextView.setText("N/A");
+                bestScoreTextView.setText("N/A");
             }
             else{
-                besdtScoreTextView.setText(Integer.toString(bestScore));
+                bestScoreTextView.setText(Integer.toString(bestScore));
             }
         }
     }
@@ -210,46 +210,46 @@ public class Game extends AppCompatActivity {
 
         if(MINES == 6){
             int bestScore = Options.getBestScoreForFourBySixAndSixConf(this);
-            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+            TextView bestScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
 
             if(bestScore == 0){
-                besdtScoreTextView.setText("N/A");
+                bestScoreTextView.setText("N/A");
             }
             else{
-                besdtScoreTextView.setText(Integer.toString(bestScore));
+                bestScoreTextView.setText(Integer.toString(bestScore));
             }
         }
         if(MINES == 10){
             int bestScore = Options.getBestScoreForFourBySixAndTenConf(this);
-            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+            TextView bestScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
 
             if(bestScore == 0){
-                besdtScoreTextView.setText("N/A");
+                bestScoreTextView.setText("N/A");
             }
             else{
-                besdtScoreTextView.setText(Integer.toString(bestScore));
+                bestScoreTextView.setText(Integer.toString(bestScore));
             }
         }
         if(MINES == 15){
             int bestScore = Options.getBestScoreForFourBySixAndFifteenConf(this);
-            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+            TextView bestScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
 
             if(bestScore == 0){
-                besdtScoreTextView.setText("N/A");
+                bestScoreTextView.setText("N/A");
             }
             else{
-                besdtScoreTextView.setText(Integer.toString(bestScore));
+                bestScoreTextView.setText(Integer.toString(bestScore));
             }
         }
         if(MINES == 20){
             int bestScore = Options.getBestScoreForFourBySixAndTwentyConf(this);
-            TextView besdtScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
+            TextView bestScoreTextView = (TextView) findViewById(R.id.configuratationBestScoreTextView);
 
             if(bestScore == 0){
-                besdtScoreTextView.setText("N/A");
+                bestScoreTextView.setText("N/A");
             }
             else{
-                besdtScoreTextView.setText(Integer.toString(bestScore));
+                bestScoreTextView.setText(Integer.toString(bestScore));
             }
         }
 
